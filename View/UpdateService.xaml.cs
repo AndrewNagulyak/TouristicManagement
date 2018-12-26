@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace TravelManager.View
 {
     /// <summary>
-    /// Логика взаимодействия для Menu.xaml
+    /// Логика взаимодействия для UpdateService.xaml
     /// </summary>
-    public partial class Menu : UserControl
+    public partial class UpdateService : UserControl
     {
-        public Menu()
+        public UpdateService()
         {
-            
-
             InitializeComponent();
         }
-        private void Routes_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.Routes);
-        private void Service_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.UpdateService);
-
     }
 }

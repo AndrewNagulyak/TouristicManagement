@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    public class InternalUserData:Base<InternalUserData>
+    public class InternalUserData:Base
     {
         public InternalUserData(string username,string hashedPassword, string role)
         {

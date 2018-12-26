@@ -16,6 +16,7 @@ namespace TravelManager.View
         private static IUnityContainer container;
         private static LoginWindow loginWindow;
         private static MainWindow mainWindow;
+        
         static Pages()
         {
             loginWindow = App.Current.Windows.OfType<LoginWindow>().FirstOrDefault(); 
@@ -71,6 +72,7 @@ namespace TravelManager.View
             }
         }
 
+
         
 
         public static MainWindow Main
@@ -93,6 +95,15 @@ namespace TravelManager.View
             {
                 routes = container.Resolve<Routes>();
                 return routes;
+            }
+        }
+        private static UpdateService updateService;
+        public static UpdateService UpdateService
+        {
+            get
+            {
+                updateService = container.Resolve<UpdateService>();
+                return updateService;
             }
         }
 

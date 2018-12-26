@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-  public  class User:Base<User>
+  public  class User:Base
     {
 
         public User(string username, string email, string role) 

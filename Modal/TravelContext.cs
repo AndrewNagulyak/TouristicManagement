@@ -14,6 +14,7 @@ namespace TravelManager.Modal
         { }
         public DbSet<InternalUserData> UsersData { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<City> Cities { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer<TravelContext>(null);

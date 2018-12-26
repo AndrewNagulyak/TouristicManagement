@@ -35,6 +35,11 @@
                         <TextBlock Text="Promotion" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0" PreviewMouseLeftButtonUp="Service_click">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="UpdateService" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
                 <ListViewItem Margin="0,10" Height="45" Padding="0">
                     <StackPanel Margin="20,0" Orientation="Horizontal">
                         <TextBlock Text="Exit" Margin="10"/>
