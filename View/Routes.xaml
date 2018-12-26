@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="TravelManager.View.Routes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TravelManager.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" Width="806.051">
+    <DockPanel Background="WhiteSmoke">
+
+        <Grid Height="54"  DockPanel.Dock="Top">
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,0,10,0">
+                <Button Uid="0" Width="200" Content="Tourizm" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
+                <Button Uid="1" Width="200" Content="Vacation" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
+                <Button Uid="2" Width="200" Content="Resort" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
+                <Button Content="X" Uid="0" Width="50" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" ></Button>
+            </StackPanel>
+            <Grid x:Name="GridCursor" Width="120" Height="5" Background="DarkCyan" HorizontalAlignment="Left" Margin="80,39,0,10"></Grid>
+        </Grid>
+
+        <Grid x:Name="Main" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.05*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.2*"/>
+
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"></DataGrid>
+            <Button Content="Info" Height="20" Grid.Column="1" Grid.Row="2"></Button>
+            <Button Content="Filtr" Height="20" Grid.Column="2" Grid.Row="2"></Button>
+
+        </Grid>
+    </DockPanel>
+</UserControl>

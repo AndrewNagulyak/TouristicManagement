@@ -1,0 +1,53 @@
+﻿<Window x:Class="TravelManager.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TravelManager"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Window.Background>
+        <ImageBrush  ImageSource="Resources/login.jpg" />
+    </Window.Background>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.3*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.1*"/>
+
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+
+            <RowDefinition Height="0.1*"/>
+
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Status}" Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Center" Background="AliceBlue" VerticalAlignment="Center" Foreground="Red" TextWrapping="Wrap" />
+
+        <TextBox Text="{Binding Username}" Grid.Row="2" Grid.Column="1" Margin="35,10,26,29" />
+        <PasswordBox x:Name="passwordBox" Grid.Row="4" Grid.Column="1" Margin="35,10,26,27" />
+        <TextBlock Background="AliceBlue" TextAlignment="Center" Padding="10" Width="116" Height="39"  Text="Username:" Grid.Row="1" Grid.Column="1" FontFamily="Arial" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontStretch="SemiCondensed" Foreground="CornflowerBlue" Margin="45,10,36,10"/>
+        <TextBlock Background="AliceBlue" TextAlignment="Center" Padding="10" Width="116" Height="39"  Text="PassWord:" Grid.Row="3" Grid.Column="1" FontFamily="Arial" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontStretch="SemiCondensed" Foreground="CornflowerBlue" Margin="45,10,36,10"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" >
+            <Button Name="log_in" Background="AliceBlue" Content="Log in" Visibility="{Binding IsInActive , Converter={StaticResource BoolToVis}}" Command="{Binding LoginCommand, Mode=OneTime}" Padding="10"
+            CommandParameter="{Binding ElementName=passwordBox}" Foreground="CornflowerBlue" Margin="35,10,0,0"
+             Width="135"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"/>
+        <Controls:ProgressRing IsActive="True" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}" Margin="66,0,71,57" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1"/>
+    </Grid>
+</Window>

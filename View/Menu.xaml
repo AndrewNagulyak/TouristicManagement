@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TravelManager.View.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TravelManager.View"
+             mc:Ignorable="d" Height="600" Width="271">
+    
+    <Grid x:Name="GridMenu" Width="271" DockPanel.Dock="Left" >
+        <StackPanel Background="Black">
+            <Image Height="134"  Stretch="Fill"></Image>
+            <ListView Foreground="SlateGray" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Height="465">
+                <ListViewItem Height="45" Margin="0,10" Padding="0">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="MainPage" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0" PreviewMouseLeftButtonUp="Routes_click" >
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="Available Routes" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="Stash" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="Ticket" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="Promotion" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Margin="0,10" Height="45" Padding="0">
+                    <StackPanel Margin="20,0" Orientation="Horizontal">
+                        <TextBlock Text="Exit" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+              
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>
