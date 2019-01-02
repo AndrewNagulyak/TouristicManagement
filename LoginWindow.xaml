@@ -48,6 +48,6 @@
              Width="135"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"/>
-        <Controls:ProgressRing IsActive="True" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}" Margin="66,0,71,57" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1"/>
+        <Controls:ProgressRing IsActive="True" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}"  Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Margin="71,10,66,47" />
     </Grid>
 </Window>

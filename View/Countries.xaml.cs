@@ -12,30 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TravelManager.View;
-using TravelManager.VIewModal;
 
-namespace TravelManager
+namespace TravelManager.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Countries.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Countries : UserControl
     {
-        public MainWindow()
+        public Countries()
         {
             InitializeComponent();
-            
         }
-        public void SetPage(UserControl page)
-        {
-            this.Main.Content = page;
-        }
-        public void SetMenu(UserControl page)
-        {
-           this.GridMenu.Content=page;
-           
-        }
-        
     }
 }

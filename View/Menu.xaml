@@ -8,7 +8,7 @@
     
     <Grid x:Name="GridMenu" Width="271" DockPanel.Dock="Left" >
         <StackPanel Background="Black">
-            <Image Height="134"  Stretch="Fill"></Image>
+            <Image Source="C:\Users\andri\source\repos\TravelManager\Resources/pic1.jpg"  Height="134"  Stretch="Fill"></Image>
             <ListView Foreground="SlateGray" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Height="465">
                 <ListViewItem Height="45" Margin="0,10" Padding="0">
                     <StackPanel Margin="20,0" Orientation="Horizontal">

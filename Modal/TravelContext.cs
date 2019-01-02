@@ -10,16 +10,19 @@ namespace TravelManager.Modal
     public class TravelContext : DbContext
     {
 
-        public TravelContext() : base("DBConnection")
-        { }
+        public TravelContext() : base("DBConect")
+        {
+        }
         public DbSet<InternalUserData> UsersData { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<City> Cities { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            Database.SetInitializer<TravelContext>(null);
-            base.OnModelCreating(modelBuilder);
-        }
+        public DbSet<Country> Countries { get; set; }
+       // public DbSet<Route> Routes { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<TravelContext>(null);
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
     }
 }

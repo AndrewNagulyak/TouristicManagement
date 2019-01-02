@@ -9,19 +9,24 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    public class City
+    public class City:Base
     {
-        [Key]
-        [Column(Order = 0)]
-        public string Name { get; set; }
+
+        
+        public string CityName { get; set; }
         public CityState State { get;set; }
+        public Country Country { get; set; }
+        public override string ToString()
+        {
+            return CityName;
+        }
     }
     public enum CityState
     {
-        [Description("From")]
-        From,
         [Description("To")]
         To,
+        [Description("From")]
+        From,
        
     }
 }

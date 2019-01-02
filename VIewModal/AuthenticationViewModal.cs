@@ -12,9 +12,9 @@ using TravelManager.View;
 namespace TravelManager.VIewModal
 {
 
-    public interface IViewModel { }
+ 
 
-    public class AuthenticationViewModel : IViewModel, INotifyPropertyChanged
+    public class AuthenticationViewModel :  INotifyPropertyChanged
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly DelegateCommand _loginCommand;

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TravelManager.VIewModal;
 
 namespace TravelManager.View
 {
@@ -20,9 +21,15 @@ namespace TravelManager.View
     /// </summary>
     public partial class UpdateService : UserControl
     {
-        public UpdateService()
+        public UpdateService(UpdateServiceViewModal updateServiceViewModal)
         {
             InitializeComponent();
+            ViewModal = updateServiceViewModal;
         }
+        public UpdateServiceViewModal ViewModal
+        {
+            set { DataContext = value; }
+        }
+      
     }
 }

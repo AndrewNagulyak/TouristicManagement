@@ -21,7 +21,7 @@ namespace TravelManager.VIewModal
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
-        }
+        }   
 
         public DelegateCommand(Func<object,Task> execute)
             : this(execute, null)

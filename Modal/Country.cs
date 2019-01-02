@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    public class Country
+    public class Country:Base
     {
         public virtual ICollection<City> Cities { get; set; }
 
@@ -16,8 +16,11 @@ namespace TravelManager.Modal
             {
             Cities = new List<City>();
             }
-        [Key]
-        [Column(Order = 0)]
-        public string Name { get; set; }
+        
+        public string CountryName { get; set; }
+        public override string ToString()
+        {
+            return CountryName;
+        }
     }
 }

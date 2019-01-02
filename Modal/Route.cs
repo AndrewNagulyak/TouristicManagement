@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    class Route:Base
+    public class Route:Base
     {
 
         private int days;   
@@ -20,16 +20,16 @@ namespace TravelManager.Modal
             }
             set
             {
-                days = (FinishDate - StartDate).Days;
+                days = 2;
             }
         }
         public FoodState FoodState { get; set; }
         public int TouristAmount { get; set; }
         public int Promotion { get; set; }
+        public Type type { get; set; }
         public Transport transport { get; set; }
         public DateTime FinishDate { get; set; }
-        public City OutCity { get; set; }
-        public City InCity { get; set; }
+        public List<City> Cities { get; set; }
 
         public int Price { get; set; }
         public Hotel Hotel { get; set; }
@@ -43,5 +43,14 @@ namespace TravelManager.Modal
         Air,
         [Description("BusPlane")]
         BusAir
+    }
+    public enum Type
+    {
+        [Description("Tourist")]
+        Tourist,
+        [Description("Vacation")]
+        Vacation,
+        [Description("Resort")]
+        Resort
     }
 }

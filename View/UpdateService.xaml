@@ -4,38 +4,100 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TravelManager.View"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="600" Width="806.051">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+    </UserControl.Resources>
     <DockPanel Background="WhiteSmoke">
 
 
         <TabControl>
-            <TabItem Name="SettingTab">
-            <Grid x:Name="Main" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="16*"/>
-                    <ColumnDefinition Width="145*"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="45,98,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button1" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="56,334,0,0" VerticalAlignment="Top" Width="75"/>
-                <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="31,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="31,238,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <ComboBox x:Name="comboBox" Text="Country" Grid.Column="1" HorizontalAlignment="Left" Margin="31,278,0,0" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="376,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
-                    <TextBox x:Name="textBox3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="376,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
-                    <TextBox x:Name="textBox4" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="376,172,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
-                    <ComboBox x:Name="comboBox2" Grid.Column="1" HorizontalAlignment="Left" Margin="376,217,0,0" VerticalAlignment="Top" Width="89"/>
-                    <TextBox x:Name="textBox5" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="376,264,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
-                    <Button x:Name="button2" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="420,413,0,0" VerticalAlignment="Top" Width="75"/>
-                    <ComboBox x:Name="comboBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="451,306,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="comboBox3" Grid.Column="1" HorizontalAlignment="Left" Margin="456,352,0,0" VerticalAlignment="Top" Width="120"/>
+            <TabItem >
+                <Grid x:Name="Routes" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="145*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="0.07*"></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="1" Grid.Row="0" Foreground="DarkGoldenrod" Content="Add VacationRoute" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top"></Label>
+                    <WrapPanel  Grid.Column="1" Grid.Row="1">
+                        <Label Content="Choose your country and city"/>
+                        <Label Content="Tourists"/>
+                        <Label Content="FromCity"/>
+                        <Label Content="     Transport"/>
+                        <Label Content="     Price"/>
+                        <Label Content="               Hotel"/>
+
+                        <Label Content="       Service"/>
+                        <Label Content="        Days"/>
+
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="1" Grid.Row="2" Margin="10">
+                        <TextBox Text="{Binding IsVisible}" Width="123" Height="25"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding VisibleCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <Button Name="Country" Width="20"  Command="{Binding VisibleCommand1, Mode=OneTime}" ></Button>
+                        <TextBox Width="40" Margin="5,0,0,0" Text="{Binding TouristRoute.TouristAmount}"></TextBox>
+                        <ComboBox Margin="7,0,0,0" Width="70" ItemsSource="{Binding FromCityList}" SelectedItem="{Binding City}"></ComboBox>
+
+                        <ComboBox Margin="7,0,0,0" Width="68" ItemsSource="{Binding TouristRoute.Transport}" SelectedIndex="{Binding TouristRoute.Transport}"></ComboBox>
+                        <ComboBox Margin="7,0,0,0" Width="68" ItemsSource="{Binding TouristRoute.Transport}" SelectedIndex="{Binding TouristRoute.Transport}"></ComboBox>
+
+                        <ComboBox Margin="7,0,0,0" Width="68" ItemsSource="{Binding TouristRoute.Transport}" SelectedIndex="{Binding TouristRoute.Transport}"></ComboBox>
+                        <ComboBox Margin="7,0,0,0" Width="71"  Text="{Binding TouristRoute.Price}"></ComboBox>
+                        <TextBox Width="90" Margin="7,0,0,0" Text="{Binding TouristRoute.StartDate}"></TextBox>
+
+
+                    </WrapPanel>
+                    <Button Command="{Binding AddTouristRouteCommand}" Content="AddTouristRoute" Width="100" Height="30"  Grid.Column="1" Grid.Row="2" Margin="508,62,112,28"></Button>
+                    <local:Countries Height="200" Width="460" Grid.Column="1" Grid.RowSpan="6" Margin="10,80,250,112" Grid.Row="2" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}}" Background="Aqua" DataContext="{Binding CountriesViewModal}" />
+
                 </Grid>
             </TabItem>
-            <TabItem>
-                
+            <TabItem Name="SettingTab">
+                <Grid x:Name="Main" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="201*"/>
+                        <ColumnDefinition Width="519*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="56,105,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCountry}"/>
+                    <Button x:Name="button1" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="67,365,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCity}"/>
+                    <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="42,61,0,0" Text="{Binding CountryParam.CountryName}" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="42,248,0,0"  Text="{Binding City.CityName}"  VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="42,288,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Countries}" SelectedItem="{Binding City.Country}"/>
+                    <TextBox x:Name="textBox2" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
+                    <TextBox x:Name="textBox3" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
+                    <TextBox x:Name="textBox4" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,139,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
+                    <ComboBox x:Name="comboBox2" Grid.Column="2" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top" Width="89"/>
+                    <TextBox x:Name="textBox5" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,231,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
+                    <Button x:Name="button2" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="206,380,0,0" VerticalAlignment="Top" Width="75"/>
+                    <ComboBox x:Name="comboBox1" Text="" Grid.Column="2" HorizontalAlignment="Left" Margin="237,273,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBox3" Grid.Column="2" HorizontalAlignment="Left" Margin="242,319,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="67,30,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label1" Content="Hotel" Grid.Column="2" HorizontalAlignment="Left" Margin="237,23,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
+
         </TabControl>
-        
+
 
     </DockPanel>
 </UserControl>

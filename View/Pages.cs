@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TravelManager.Modal;
+using TravelManager.Modal.Services;
 using TravelManager.VIewModal;
 using Unity;
+using Unity.Injection;
 
 namespace TravelManager.View
 {
@@ -21,6 +23,7 @@ namespace TravelManager.View
         {
             loginWindow = App.Current.Windows.OfType<LoginWindow>().FirstOrDefault(); 
             container = new UnityContainer();
+            
         }
         private static MainControl mainControl;
         private static Menu menu;
@@ -97,11 +100,27 @@ namespace TravelManager.View
                 return routes;
             }
         }
+        private static Countries countries;
+        public static Countries Countries
+        {
+            get
+            {
+                
+                countries = container.Resolve<Countries>();
+                return countries;
+            }
+        }
         private static UpdateService updateService;
         public static UpdateService UpdateService
         {
             get
             {
+                TravelContext travelContext = new TravelContext();
+                container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
+                container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
+                container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
+
+                container.RegisterType<UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(),container.Resolve<IService<Route>>(),container.Resolve<IService<City>>(), container.Resolve<PlacesViewModal>() }));
                 updateService = container.Resolve<UpdateService>();
                 return updateService;
             }

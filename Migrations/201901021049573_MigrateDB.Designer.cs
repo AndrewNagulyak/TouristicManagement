@@ -7,13 +7,13 @@ namespace TravelManager.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddCompanyMigration : IMigrationMetadata
+    public sealed partial class MigrateDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCompanyMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MigrateDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812262055347_AddCompanyMigration"; }
+            get { return "201901021049573_MigrateDB"; }
         }
         
         string IMigrationMetadata.Source

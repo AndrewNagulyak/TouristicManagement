@@ -10,7 +10,6 @@ namespace TravelManager.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TravelManager.Modal.TravelContext";
         }
 
         protected override void Seed(TravelManager.Modal.TravelContext context)

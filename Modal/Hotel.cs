@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    class Hotel
+    public class Hotel:Base
     {
        public string Site { get; set; }
        public string Addres { get; set; }

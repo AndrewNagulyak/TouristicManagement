@@ -21,6 +21,7 @@ namespace TravelManager.Modal
             {
                 using (TravelContext context = new TravelContext())
                 {
+                    context.Database.CreateIfNotExists();
                     return context.UsersData.ToList();
                 }
 

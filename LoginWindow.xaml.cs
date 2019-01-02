@@ -40,9 +40,9 @@ namespace TravelManager
             }
 
         }
-        public IViewModel ViewModel
+        public AuthenticationViewModel ViewModel
         {
-            get { return DataContext as IViewModel; }
+            get { return DataContext as AuthenticationViewModel; }
             set { DataContext = value; }
         }
     }
