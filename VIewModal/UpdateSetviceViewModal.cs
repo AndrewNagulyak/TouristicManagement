@@ -4,17 +4,20 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data.Entity.Validation;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Markup;
 using TravelManager.Modal;
 using TravelManager.Modal.Services;
 
 namespace TravelManager.VIewModal
 {
-    public static class CollectioConverter 
+    public static class CollectioConverter
     {
 
         public static ObservableCollection<T> ToObserverable<T>(this IEnumerable<T> collection)
@@ -35,6 +38,7 @@ namespace TravelManager.VIewModal
         private ObservableCollection<City> fromcities;
         private Country countryparam;
         private City city;
+        private string[] state;
         private IService<City> cityService;
         private Route touristRoute;
         private IService<Country> countryService;
@@ -42,11 +46,17 @@ namespace TravelManager.VIewModal
         #endregion
         #region properties
         public Route TouristRoute { get { return touristRoute; } set { touristRoute = value; NotifyPropertyChanged("TouristRoute"); } }
-        public Country CountryParam { get { return countryparam; } set { if (value != null) countryparam = new Country() { CountryName = value.CountryName, Cities = value.Cities}; NotifyPropertyChanged("CountryParam"); } }
-
-        public ObservableCollection<City> Cities { get { return cityService.Get().ToObserverable<City>(); ; }  }
+        public Country CountryParam { get { return countryparam; } set { if (value != null) countryparam = new Country() { CountryName = value.CountryName, Cities = value.Cities }; NotifyPropertyChanged("CountryParam"); } }
+        public string[] State
+        {
+            get
+            {
+                return state;
+            }
+        }
+        public ObservableCollection<City> Cities { get { return cityService.Get().ToObserverable<City>(); ; } }
         public ObservableCollection<City> FromCityList { get { return fromcities; } set { fromcities = value; NotifyPropertyChanged("FromCityList"); } }
-        public City City { get { return city; } set { if (value != null) city = new City() { CityName = value.CityName, State = CityState.To,Country = value.Country , Id=value.Id}; NotifyPropertyChanged("City"); } }
+        public City City { get { return city; } set { if (value != null) city = new City() { CityName = value.CityName, State = CityState.To, Country = value.Country, Id = value.Id }; NotifyPropertyChanged("City"); } }
         public ObservableCollection<Country> Countries { get { return countryService.Get().ToObserverable<Country>(); } }
         public DelegateCommand VisibleCommand1 { get { return _visible1; } }
         public DelegateCommand VisibleCommand { get { return _visible; } }
@@ -60,7 +70,12 @@ namespace TravelManager.VIewModal
         #endregion
         //TouristRoute;
         public UpdateServiceViewModal(IService<Country> countryService, IService<Route> routeService, IService<City> cityService, PlacesViewModal countryViewModal)
+
         {
+            state = Enum.GetNames(typeof(CityState))
+                     .Select(x => x.ToString())
+                      .ToArray();
+
             touristRoute = new Route();
             this.routeService = routeService;
             CountriesViewModal = countryViewModal;
@@ -78,7 +93,7 @@ namespace TravelManager.VIewModal
 
 
         }
-#
+        #region notify
         public event PropertyChangedEventHandler PropertyChanged;
         public event NotifyCollectionChangedEventHandler CollectionChangedEvent;
 
@@ -89,11 +104,12 @@ namespace TravelManager.VIewModal
             if (propertyName == "City" && CollectionChangedEvent != null) CollectionChangedEvent.Invoke(null, null);
 
         }
+        #endregion
         private void AddCity(object o)
         {
             try
             {
-                City city = new City() { CityName = City.CityName, Country = City.Country ,State=0};
+                City city = new City() { CityName = City.CityName, Country = City.Country, State = City.State };
                 cityService.Add(city);
             }
             catch (Exception e)
@@ -114,7 +130,7 @@ namespace TravelManager.VIewModal
             try
             {
                 Route route = TouristRoute;
-              //  routeService.Create(route);
+                //  routeService.Create(route);
                 routeService.Add(route);
             }
             catch (Exception e)
@@ -129,18 +145,18 @@ namespace TravelManager.VIewModal
 
                 Country country = new Country() { CountryName = countryparam.CountryName };
                 countryService.Add(country);
-                OnUpdate(null,null);
+                OnUpdate(null, null);
             }
             catch (DbEntityValidationException e)
             {
                 foreach (var eve in e.EntityValidationErrors)
                 {
-                    MessageBox.Show("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:"+
-                        eve.Entry.Entity.GetType().Name+ eve.Entry.State);
+                    MessageBox.Show("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:" +
+                        eve.Entry.Entity.GetType().Name + eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        MessageBox.Show("- Property: \"{0}\", Error: \"{1}\""+
-                            ve.PropertyName+ ve.ErrorMessage);
+                        MessageBox.Show("- Property: \"{0}\", Error: \"{1}\"" +
+                            ve.PropertyName + ve.ErrorMessage);
                     }
                 }
                 throw;
@@ -156,7 +172,7 @@ namespace TravelManager.VIewModal
         {
             if (CountriesViewModal.IsVisible == false)
                 CountriesViewModal.Visible(true);
-          
+
 
         }
         private void Visible1(object o)
@@ -167,5 +183,10 @@ namespace TravelManager.VIewModal
                 CountriesViewModal.Visible(false);
 
         }
+
+
+
     }
+
+
 }

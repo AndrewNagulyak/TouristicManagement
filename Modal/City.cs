@@ -23,9 +23,7 @@ namespace TravelManager.Modal
     }
     public enum CityState
     {
-        [Description("To")]
         To,
-        [Description("From")]
         From,
        
     }
