@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -25,6 +26,11 @@ namespace TravelManager.VIewModal
             return new ObservableCollection<T>(collection);
         }
     }
+    public interface IOpenFileService
+    {
+        string FileName { get; }
+        bool OpenFileDialog();
+    }
     public class UpdateServiceViewModal : INotifyPropertyChanged
     {
         #region commands
@@ -34,6 +40,7 @@ namespace TravelManager.VIewModal
         private readonly DelegateCommand _addcountry;
         private readonly DelegateCommand _addhotel;
         private readonly DelegateCommand _addroute;
+        private readonly DelegateCommand _openfile;
         #endregion
         #region fields
         private ObservableCollection<City> fromcities;
@@ -66,6 +73,7 @@ namespace TravelManager.VIewModal
 
         public ObservableCollection<Country> Countries { get { return countryService.Get().ToObserverable<Country>(); } }
 
+        public DelegateCommand OpenFile { get { return _openfile; } }
         public DelegateCommand VisibleCommand1 { get { return _visible1; } }
         public DelegateCommand VisibleCommand { get { return _visible; } }
         public DelegateCommand addCity { get { return _addcity; } }
@@ -78,7 +86,7 @@ namespace TravelManager.VIewModal
         }
         public Hotel Hotel { get { return hotel; } set { if (value != null) hotel = new Hotel() { Name = value.Name, Addres=value.Addres,Site=value.Site,Stars=value.Stars,Describe=value.Describe,City=value.City, Id = value.Id }; NotifyPropertyChanged("Hotel"); } }
 
-        public ObservableCollection<City> Countrycities { get { return cityService.Get(i=>i.Country.CountryName==HotelCountry.CountryName).ToObserverable<City>();  } }
+        public ObservableCollection<City> Countrycities { get { if (hotelcountry != null) return cityService.Get(i => i.Country.CountryName == HotelCountry.CountryName).ToObserverable<City>(); else return null; } }
 
 
         #endregion
@@ -110,6 +118,7 @@ namespace TravelManager.VIewModal
             _addcountry = new DelegateCommand((Action<object>)AddCountry);
             _addroute = new DelegateCommand((Action<object>)AddTouristRoute);
             _addhotel = new DelegateCommand((Action<object>)AddHotel);
+            _openfile = new DelegateCommand((Action<object>)Openfile);
             City = new City();
             CountryParam = new Country();
             Hotel = new Hotel();
@@ -128,6 +137,18 @@ namespace TravelManager.VIewModal
 
         }
         #endregion
+        private void Openfile(object o)
+        {
+
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == true)
+            {
+                Hotel.HotelImage = Encoding.GetEncoding("UTF-8").GetBytes(dlg.FileName);
+            }
+        }
+
+    
         private void AddCity(object o)
         {
            
@@ -158,7 +179,7 @@ namespace TravelManager.VIewModal
         }
         private void AddHotel(object o)
         {
-            Hotel hotel = new Hotel() { City = Hotel.City, Addres = Hotel.Addres, Stars = Hotel.Stars, Site = Hotel.Site, FoodState = Hotel.FoodState, Describe = Hotel.Describe, Name = Hotel.Name };
+            Hotel hotel = new Hotel() { City = Hotel.City,HotelImage=Hotel.HotelImage, Addres = Hotel.Addres, Stars = Hotel.Stars, Site = Hotel.Site, FoodState = Hotel.FoodState, Describe = Hotel.Describe, Name = Hotel.Name };
             hotelService.Add(hotel);
             OnUpdate(null, null);
             

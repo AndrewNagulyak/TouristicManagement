@@ -25,11 +25,13 @@ namespace TravelManager.View
         {
             InitializeComponent();
             ViewModal = updateServiceViewModal;
+            tb1.Focus();
         }
         public UpdateServiceViewModal ViewModal
         {
             set { DataContext = value; }
         }
       
+
     }
 }

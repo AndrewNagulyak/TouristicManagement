@@ -10,7 +10,6 @@ namespace TravelManager.Modal.Services
     class RouteService : AllServices<Route>
     {
         DbContext _context;
-        List<Route> ts;
 
         public RouteService(DbContext context) : base(context)
         {

@@ -49,7 +49,7 @@
 
                     </WrapPanel>
                     <WrapPanel Grid.Column="2" Grid.Row="2" Margin="10">
-                        <TextBox Text="{Binding IsVisible}" Width="123" Height="25"  >
+                        <TextBox Name="tb1" Text="{Binding IsVisible}" Width="123" Height="25"  >
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding VisibleCommand}"/>
@@ -69,8 +69,8 @@
 
 
                     </WrapPanel>
-                    <Button Command="{Binding AddTouristRouteCommand}" Content="AddTouristRoute"  Grid.Column="2" Grid.Row="5" Margin="580,28,40,62"/>
-                    <local:Countries Grid.Column="2" Grid.RowSpan="4" Margin="57,49,203,71" Grid.Row="2" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}}" Background="Aqua" DataContext="{Binding CountriesViewModal}" />
+                    <Button Command="{Binding AddTouristRouteCommand}" Content="AddTouristRoute"  Grid.Column="2" Grid.Row="8" Margin="584,29,36,61"/>
+                    <local:Countries Width="480" Height="400" Grid.Column="2" Grid.RowSpan="8" Margin="57,49,203,71" Grid.Row="2" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}}" Background="Transparent" DataContext="{Binding CountriesViewModal}" />
 
                 </Grid>
             </TabItem>
@@ -91,7 +91,9 @@
                     <TextBox x:Name="site" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,97,0,0" TextWrapping="Wrap" Text="{Binding Hotel.Site}" VerticalAlignment="Top" Width="195"/>
                     <TextBox x:Name="Address" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="162,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Text="{Binding Hotel.Addres}"/>
                     <ComboBox x:Name="stars" Grid.Column="2" HorizontalAlignment="Left" Margin="290,189,0,0" VerticalAlignment="Top" Width="67" ItemsSource="{Binding Stars}" SelectedItem="{Binding Hotel.Stars}"/>
-                    <Button Command="{Binding addHotel}" x:Name="button2" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="282,447,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Command="{Binding addHotel}" x:Name="button2" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="282,485,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Margin="282,433,162,132" Height="23" Name="BrowseButton" Width="75" Command="{Binding OpenFile}" Grid.Column="2">Browse
+                    </Button>
                     <ComboBox x:Name="comboBox1" Text="" Grid.Column="2" HorizontalAlignment="Left" Margin="162,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countries}" SelectedItem="{Binding HotelCountry}"/>
                     <ComboBox x:Name="comboBox3" Grid.Column="2" HorizontalAlignment="Left" Margin="268,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countrycities}" SelectedItem="{Binding Hotel.City}"/>
                     <Label x:Name="label" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="67,30,0,0" VerticalAlignment="Top"/>

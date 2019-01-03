@@ -7,16 +7,27 @@
              
              xmlns:local="clr-namespace:TravelManager.View"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="480">
+             d:DesignHeight="400" d:DesignWidth="480">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"> </ColumnDefinition>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0*"></ColumnDefinition>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
-        <ListView  Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="6*"></RowDefinition>
+            <RowDefinition Height ="3*"></RowDefinition>
+            <RowDefinition Height ="3*"></RowDefinition>
+
+
+        </Grid.RowDefinitions>
+        <ListView  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
             <ListViewItem>
                 Coutry:
             </ListViewItem>
@@ -36,27 +47,44 @@
                 <TextBlock Text="{Binding SelectedHotel}"></TextBlock>
             </ListViewItem>
         </ListView>
-        <ListView ItemsSource="{Binding Countries}" Grid.Column="1" SelectedItem="{Binding SelectedCountry}" >
+        <ListView ItemsSource="{Binding Countries}" Grid.Column="2" Grid.Row="0" SelectedItem="{Binding SelectedCountry}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CountryName}"/>
+                    <GridViewColumn Header="Name" Width="115" DisplayMemberBinding="{Binding CountryName}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView ItemsSource="{Binding SelectedCountry.Cities}" Grid.Column="2" SelectedItem="{Binding SelectedCity}">
+        <ListView  ItemsSource="{Binding SelectedCountry.Cities}" Grid.Column="3" SelectedItem="{Binding SelectedCity}">
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CityName}"/>
+                    <GridViewColumn Width="115" Header="Name" DisplayMemberBinding="{Binding CityName}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView ItemsSource="{Binding SelectedCity.Hotels}" Grid.Column="3" SelectedItem="{Binding SelectedHotel}">
+        <ListView ItemsSource="{Binding SelectedCity.Hotels}" Grid.Column="4" SelectedItem="{Binding SelectedHotel}">
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HotelName}"/>
+                    <GridViewColumn Width="115" Header="Name" DisplayMemberBinding="{Binding Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="4"  Visibility="{Binding Selected, Converter={StaticResource BoolToVis}}" >
+            <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Content="Name:"></Label>
+                <Label Content="{Binding SelectedHotel.Name}"></Label>
+                <Label Content="Stars:"></Label>
+                <Label Content="{Binding SelectedHotel.Stars}"></Label>
+                <Label Content="Site:"></Label>
+                <Label Content="{Binding SelectedHotel.Site}"></Label>
+            </DockPanel>
+            <StackPanel Grid.Column="0" Margin="0,49,0,69">
+                <Label Content="Description :"/>
+                <Label Content="{Binding SelectedHotel.Describe}" Height="56"></Label>
+
+            </StackPanel>
+            <Image Source="{Binding Image}" Margin="268,20,-99,53"></Image>
+
+        </Grid>
 
     </Grid>
 </UserControl>
