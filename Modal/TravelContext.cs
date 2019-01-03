@@ -16,6 +16,8 @@ namespace TravelManager.Modal
         public DbSet<InternalUserData> UsersData { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+
         public DbSet<Country> Countries { get; set; }
        // public DbSet<Route> Routes { get; set; }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

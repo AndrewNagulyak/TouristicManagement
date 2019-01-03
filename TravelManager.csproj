@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201901021049573_MigrateDB.Designer.cs">
       <DependentUpon>201901021049573_MigrateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901031105404_MigrateDB1.cs" />
+    <Compile Include="Migrations\201901031105404_MigrateDB1.Designer.cs">
+      <DependentUpon>201901031105404_MigrateDB1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\AllServices.cs" />
     <Compile Include="Modal\Authentification\AnonymousIdentity.cs" />
@@ -112,6 +116,7 @@
     <Compile Include="Modal\Authentification\InternalUserData.cs" />
     <Compile Include="Modal\Services\CityService.cs" />
     <Compile Include="Modal\Services\CountryService.cs" />
+    <Compile Include="Modal\Services\HotelService.cs" />
     <Compile Include="Modal\Services\RouteService.cs" />
     <Compile Include="Modal\TravelContext.cs" />
     <Compile Include="Modal\City.cs" />
@@ -203,6 +208,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201901021049573_MigrateDB.resx">
       <DependentUpon>201901021049573_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031105404_MigrateDB1.resx">
+      <DependentUpon>201901031105404_MigrateDB1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

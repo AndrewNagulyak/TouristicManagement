@@ -12,10 +12,16 @@ namespace TravelManager.Modal
     public class City:Base
     {
 
-        
+        public City()
+        {
+            Hotels = new List<Hotel>();
+
+        }
         public string CityName { get; set; }
         public CityState State { get;set; }
         public Country Country { get; set; }
+        public virtual ICollection<Hotel> Hotels { get; set; }
+
         public override string ToString()
         {
             return CityName;

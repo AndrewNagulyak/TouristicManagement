@@ -7,12 +7,14 @@
              
              xmlns:local="clr-namespace:TravelManager.View"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="360">
+             d:DesignHeight="200" d:DesignWidth="480">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"> </ColumnDefinition>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+
         </Grid.ColumnDefinitions>
         <ListView  Grid.Column="0">
             <ListViewItem>
@@ -27,6 +29,12 @@
             <ListViewItem>
                 <TextBlock Text="{Binding SelectedCity}"></TextBlock>
             </ListViewItem>
+            <ListViewItem>
+                Hotel:
+            </ListViewItem>
+            <ListViewItem>
+                <TextBlock Text="{Binding SelectedHotel}"></TextBlock>
+            </ListViewItem>
         </ListView>
         <ListView ItemsSource="{Binding Countries}" Grid.Column="1" SelectedItem="{Binding SelectedCountry}" >
             <ListView.View>
@@ -39,6 +47,13 @@
             <ListView.View>
                 <GridView >
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CityName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView ItemsSource="{Binding SelectedCity.Hotels}" Grid.Column="3" SelectedItem="{Binding SelectedHotel}">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HotelName}"/>
                 </GridView>
             </ListView.View>
         </ListView>

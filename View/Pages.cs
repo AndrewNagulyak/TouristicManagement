@@ -119,9 +119,11 @@ namespace TravelManager.View
                 TravelContext travelContext = new TravelContext();
                 container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
                 container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
+                container.RegisterType<IService<Hotel>, HotelService>(new InjectionConstructor(new object[] { travelContext }));
+
                 container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
 
-                container.RegisterType<UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(),container.Resolve<IService<Route>>(),container.Resolve<IService<City>>(), container.Resolve<PlacesViewModal>() }));
+                container.RegisterType<UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(),container.Resolve<IService<Route>>(),container.Resolve<IService<City>>(),container.Resolve<IService<Hotel>>(), container.Resolve<PlacesViewModal>() }));
                 updateService = container.Resolve<UpdateService>();
                 return updateService;
             }

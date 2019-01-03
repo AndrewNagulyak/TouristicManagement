@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,10 @@ namespace TravelManager.Modal.Services
 {
     class RouteService : AllServices<Route>
     {
-        TravelContext _context;
+        DbContext _context;
         List<Route> ts;
 
-        public RouteService(TravelContext context) : base(context)
+        public RouteService(DbContext context) : base(context)
         {
             _context = context;
 
