@@ -17,7 +17,7 @@ namespace TravelManager.Modal
        public City City { get; set; }
        public int PricePerNight { get; set; }
        public Stars Stars { get; set; }
-       public byte[] HotelImage { get; set; }
+       public string Image { get; set; }
     
         public override string ToString()
         {

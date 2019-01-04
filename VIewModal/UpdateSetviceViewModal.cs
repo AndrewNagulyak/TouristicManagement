@@ -151,7 +151,7 @@ namespace TravelManager.VIewModal
 
             if (dlg.ShowDialog() == true)
             {
-                Hotel.HotelImage = Encoding.GetEncoding("UTF-8").GetBytes(dlg.FileName);
+                Hotel.Image = dlg.FileName;
             }
         }
 
@@ -195,7 +195,7 @@ namespace TravelManager.VIewModal
         }
             private void AddHotel(object o)
         {
-            Hotel hotel = new Hotel() { City = Hotel.City,HotelImage=Hotel.HotelImage, Addres = Hotel.Addres, Stars = Hotel.Stars, Site = Hotel.Site, FoodState = Hotel.FoodState, Describe = Hotel.Describe, Name = Hotel.Name,PricePerNight=Hotel.PricePerNight };
+            Hotel hotel = new Hotel() { City = Hotel.City,Image=Hotel.Image, Addres = Hotel.Addres, Stars = Hotel.Stars, Site = Hotel.Site, FoodState = Hotel.FoodState, Describe = Hotel.Describe, Name = Hotel.Name,PricePerNight=Hotel.PricePerNight };
             hotelService.Add(hotel);
             OnUpdate(null, null);
             

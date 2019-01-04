@@ -25,7 +25,7 @@ namespace TravelManager.VIewModal
         
 
         public City SelectedCity { get { return _city; } set { _city = value; NotifyPropertyChanged("SelectedCity"); } }
-        public Hotel SelectedHotel { get { return _hotel; } set { _hotel = value; NotifyPropertyChanged("SelectedHotel"); NotifyPropertyChanged("Selected"); NotifyPropertyChanged("Image"); } }
+        public Hotel SelectedHotel { get { return _hotel; } set { _hotel = value; NotifyPropertyChanged("SelectedHotel"); NotifyPropertyChanged("Selected"); } }
         private bool isVisible;
         public bool IsVisible
         {
@@ -33,7 +33,6 @@ namespace TravelManager.VIewModal
             set { isVisible = value; NotifyPropertyChanged("IsVisible"); }
 
         }
-        public string Image { get { if (_hotel != null) return Encoding.UTF8.GetString(SelectedHotel.HotelImage); else return ""; } }
         public Country SelectedCountry { get => _selectedCountry; set { _selectedCountry = value; NotifyPropertyChanged("SelectedCountry");}
         }
         public bool Selected { get { if (SelectedHotel == null) return false; else return true; } }

@@ -106,6 +106,10 @@
     <Compile Include="Migrations\201901040716392_MigrateDB1.Designer.cs">
       <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901042309301_MigrateDB2.cs" />
+    <Compile Include="Migrations\201901042309301_MigrateDB2.Designer.cs">
+      <DependentUpon>201901042309301_MigrateDB2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\AllServices.cs" />
     <Compile Include="Modal\Authentification\AnonymousIdentity.cs" />
@@ -148,6 +152,9 @@
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages.cs" />
+    <Compile Include="View\RouteControl.xaml.cs">
+      <DependentUpon>RouteControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Routes.xaml.cs">
       <DependentUpon>Routes.xaml</DependentUpon>
     </Compile>
@@ -186,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\RouteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Routes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901040716392_MigrateDB1.resx">
       <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901042309301_MigrateDB2.resx">
+      <DependentUpon>201901042309301_MigrateDB2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

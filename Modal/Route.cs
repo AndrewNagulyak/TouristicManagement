@@ -29,6 +29,10 @@ namespace TravelManager.Modal
             StartDate = DateTime.Today;
             FinishDate = DateTime.Today;
         }
+        public Route()
+        {
+
+        }
     }
     public enum Transport
     {
