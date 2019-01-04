@@ -21,17 +21,12 @@ namespace TravelManager.View
     /// </summary>
     public partial class UpdateService : UserControl
     {
-        public UpdateService(UpdateServiceViewModal updateServiceViewModal)
+        public UpdateService(IViewModal<UpdateServiceViewModal> updateServiceViewModal)
         {
             InitializeComponent();
-            ViewModal = updateServiceViewModal;
-            tb1.Focus();
+            DataContext = updateServiceViewModal;
         }
-        public UpdateServiceViewModal ViewModal
-        {
-            set { DataContext = value; }
-        }
-      
+       
 
     }
 }

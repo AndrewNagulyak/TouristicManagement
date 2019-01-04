@@ -15,6 +15,7 @@ namespace TravelManager.Modal
        public FoodState FoodState { get; set; }
        public string Describe { get; set; }
        public City City { get; set; }
+       public int PricePerNight { get; set; }
        public Stars Stars { get; set; }
        public byte[] HotelImage { get; set; }
     

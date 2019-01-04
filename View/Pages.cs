@@ -22,9 +22,19 @@ namespace TravelManager.View
         
         static Pages()
         {
-            loginWindow = App.Current.Windows.OfType<LoginWindow>().FirstOrDefault(); 
+            loginWindow = App.Current.Windows.OfType<LoginWindow>().FirstOrDefault();
+            TravelContext travelContext = new TravelContext();
+
             container = new UnityContainer();
-            
+
+            container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<Hotel>, HotelService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IViewModal<UpdateServiceViewModal>, UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(), container.Resolve<IService<Route>>(), container.Resolve<IService<City>>(), container.Resolve<IService<Hotel>>(), container.Resolve<PlacesViewModal>() }));
+            container.RegisterType<IViewModal<RoutesViewModal>, RoutesViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Route>>() }));
+
+
         }
         private static MainControl mainControl;
         private static Menu menu;
@@ -116,14 +126,7 @@ namespace TravelManager.View
         {
             get
             {
-                TravelContext travelContext = new TravelContext();
-                container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
-                container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
-                container.RegisterType<IService<Hotel>, HotelService>(new InjectionConstructor(new object[] { travelContext }));
 
-                container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
-
-                container.RegisterType<UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(),container.Resolve<IService<Route>>(),container.Resolve<IService<City>>(),container.Resolve<IService<Hotel>>(), container.Resolve<PlacesViewModal>() }));
                 updateService = container.Resolve<UpdateService>();
                 return updateService;
             }

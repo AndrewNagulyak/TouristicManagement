@@ -98,13 +98,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201901021049573_MigrateDB.cs" />
-    <Compile Include="Migrations\201901021049573_MigrateDB.Designer.cs">
-      <DependentUpon>201901021049573_MigrateDB.cs</DependentUpon>
+    <Compile Include="Migrations\201901040639011_MigrateDB.cs" />
+    <Compile Include="Migrations\201901040639011_MigrateDB.Designer.cs">
+      <DependentUpon>201901040639011_MigrateDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901031105404_MigrateDB1.cs" />
-    <Compile Include="Migrations\201901031105404_MigrateDB1.Designer.cs">
-      <DependentUpon>201901031105404_MigrateDB1.cs</DependentUpon>
+    <Compile Include="Migrations\201901040716392_MigrateDB1.cs" />
+    <Compile Include="Migrations\201901040716392_MigrateDB1.Designer.cs">
+      <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\AllServices.cs" />
@@ -114,10 +114,12 @@
     <Compile Include="Modal\Authentification\CustomIdentity.cs" />
     <Compile Include="Modal\Authentification\CustomPrinciple.cs" />
     <Compile Include="Modal\Authentification\InternalUserData.cs" />
+    <Compile Include="Modal\Order.cs" />
     <Compile Include="Modal\Services\CityService.cs" />
     <Compile Include="Modal\Services\CountryService.cs" />
     <Compile Include="Modal\Services\HotelService.cs" />
     <Compile Include="Modal\Services\RouteService.cs" />
+    <Compile Include="Modal\Tourist.cs" />
     <Compile Include="Modal\TravelContext.cs" />
     <Compile Include="Modal\City.cs" />
     <Compile Include="Modal\Country.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="VIewModal\DelegateCommand.cs" />
     <Compile Include="VIewModal\AuthenticationViewModal.cs" />
     <Compile Include="VIewModal\MenuViewModal.cs" />
+    <Compile Include="VIewModal\RoutesViewModal.cs" />
     <Compile Include="VIewModal\UpdateSetviceViewModal.cs" />
     <Compile Include="View\AdminMenu.xaml.cs">
       <DependentUpon>AdminMenu.xaml</DependentUpon>
@@ -206,11 +209,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201901021049573_MigrateDB.resx">
-      <DependentUpon>201901021049573_MigrateDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901040639011_MigrateDB.resx">
+      <DependentUpon>201901040639011_MigrateDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901031105404_MigrateDB1.resx">
-      <DependentUpon>201901031105404_MigrateDB1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901040716392_MigrateDB1.resx">
+      <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

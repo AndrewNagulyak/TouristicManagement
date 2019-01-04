@@ -12,9 +12,6 @@
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,0,10,0">
                 <Button Uid="0" Width="200" Content="Tourizm" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
-                <Button Uid="1" Width="200" Content="Vacation" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
-                <Button Uid="2" Width="200" Content="Resort" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Teal" Margin="20 0" ></Button>
-                <Button Content="X" Uid="0" Width="50" Height="50" FontFamily="serif" FontSize="18" FontWeight="SemiBold" Background="{x:Null}" BorderBrush="{x:Null}" ></Button>
             </StackPanel>
             <Grid x:Name="GridCursor" Width="120" Height="5" Background="DarkCyan" HorizontalAlignment="Left" Margin="80,39,0,10"></Grid>
         </Grid>
@@ -32,9 +29,14 @@
                 <RowDefinition Height="0.2*"/>
 
             </Grid.RowDefinitions>
-            <DataGrid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"></DataGrid>
-            <Button Content="Info" Height="20" Grid.Column="1" Grid.Row="2"></Button>
-            <Button Content="Filtr" Height="20" Grid.Column="2" Grid.Row="2"></Button>
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Routes}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2">
+                <DataGrid.Columns >
+                    <DataGridTextColumn x:Name="Name" Header="Ваш текст сюда"  Binding="{Binding TouristAmount}" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Content="AddToStash" Height="20" Grid.Column="1" Grid.Row="2"></Button>
+            <Button Content="Delete" Height="20" Grid.Column="2" Grid.Row="2"></Button>
 
         </Grid>
     </DockPanel>

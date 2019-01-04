@@ -13,7 +13,7 @@ namespace TravelManager.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201901021049573_MigrateDB"; }
+            get { return "201901040639011_MigrateDB"; }
         }
         
         string IMigrationMetadata.Source

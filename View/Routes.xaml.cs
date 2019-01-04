@@ -12,17 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TravelManager.VIewModal;
 
 namespace TravelManager.View
 {
     /// <summary>
     /// Логика взаимодействия для Routes.xaml
     /// </summary>
+    public interface IViewModal<T>
+    { }
     public partial class Routes : UserControl
     {
-        public Routes()
+        public Routes( IViewModal<RoutesViewModal> routesViewModal)
         {
             InitializeComponent();
+            DataContext = routesViewModal;
         }
+       
     }
 }

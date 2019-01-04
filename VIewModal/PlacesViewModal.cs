@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelManager.Modal;
+using TravelManager.View;
 
 namespace TravelManager.VIewModal
 {
-    public class PlacesViewModal:INotifyPropertyChanged
+    public class PlacesViewModal:INotifyPropertyChanged,IViewModal<PlacesViewModal>
     {
         private ObservableCollection<Country> _countries;
         private City _city;
@@ -57,6 +58,7 @@ namespace TravelManager.VIewModal
             else
                 isVisible = false;
             NotifyPropertyChanged("IsVisible");
+            NotifyPropertyChanged("Countries");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

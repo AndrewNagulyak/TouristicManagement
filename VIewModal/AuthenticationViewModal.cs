@@ -14,7 +14,7 @@ namespace TravelManager.VIewModal
 
  
 
-    public class AuthenticationViewModel :  INotifyPropertyChanged
+    public class AuthenticationViewModel :  INotifyPropertyChanged,IViewModal<AuthenticationViewModel>
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly DelegateCommand _loginCommand;

@@ -69,7 +69,7 @@
             </ListView.View>
         </ListView>
         <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="4"  Visibility="{Binding Selected, Converter={StaticResource BoolToVis}}" >
-            <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <DockPanel Grid.Column="0" Margin="0,0,-14,175">
                 <Label Content="Name:"></Label>
                 <Label Content="{Binding SelectedHotel.Name}"></Label>
                 <Label Content="Stars:"></Label>
@@ -77,12 +77,18 @@
                 <Label Content="Site:"></Label>
                 <Label Content="{Binding SelectedHotel.Site}"></Label>
             </DockPanel>
+            <DockPanel Grid.Column="0" Margin="0,20,46,151">
+                <Label Content="Addres:"></Label>
+                <Label Content="{Binding SelectedHotel.Addres}"></Label>
+                <Label Content="PricePerNight:"></Label>
+                <Label Content="{Binding SelectedHotel.PricePerNight}"></Label>
+            </DockPanel>
             <StackPanel Grid.Column="0" Margin="0,49,0,69">
                 <Label Content="Description :"/>
-                <Label Content="{Binding SelectedHotel.Describe}" Height="56"></Label>
+                <Label Content="{Binding SelectedHotel.Describe}" Height="120" RenderTransformOrigin="0.496,1.006"/>
 
             </StackPanel>
-            <Image Source="{Binding Image}" Margin="268,20,-99,53"></Image>
+            <Image Source="{Binding Image}" Margin="283,63,-114,10"></Image>
 
         </Grid>
 

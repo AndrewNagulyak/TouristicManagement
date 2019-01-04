@@ -19,7 +19,7 @@ namespace TravelManager.Modal
         public DbSet<Hotel> Hotels { get; set; }
 
         public DbSet<Country> Countries { get; set; }
-       // public DbSet<Route> Routes { get; set; }
+        public DbSet<Route> Routes { get; set; }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    Database.SetInitializer<TravelContext>(null);

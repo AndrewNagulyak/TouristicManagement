@@ -20,6 +20,7 @@ namespace TravelManager.Modal
         public string CityName { get; set; }
         public CityState State { get;set; }
         public Country Country { get; set; }
+        public int Km { get; set; }
         public virtual ICollection<Hotel> Hotels { get; set; }
 
         public override string ToString()

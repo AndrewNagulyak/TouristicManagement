@@ -37,9 +37,23 @@ namespace TravelManager.Modal
         
         public virtual void Add(T item)
         {
+            try
+            {
+
+            
             _dbSet.Add(item);
             _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
 
+                throw;
+            }
+
+        }
+        public virtual T FindById(Guid id)
+        {
+            return _dbSet.Find(id);
         }
         public virtual IEnumerable<T> Get()
         {
@@ -56,10 +70,7 @@ namespace TravelManager.Modal
             return collection;
         }
 
-        public virtual T FindById(Guid id)
-        {
-            return _dbSet.Find(id);
-        }
+     
         public virtual T GetObserver(string name)
         {
             DbSet<T> _dbset =_context.Set<T>();
