@@ -12,37 +12,40 @@ namespace TravelManager.VIewModal
 {
     public class PlacesViewModal:INotifyPropertyChanged,IViewModal<PlacesViewModal>
     {
+        #region fields
         private ObservableCollection<Country> _countries;
         private City _city;
         private Country _selectedCountry;
         private Hotel _hotel;
- 
+        private bool _isVisible;
+
 
         private IService<Country> _countryService;
         private IService<City> _cityService;
-
-        public ObservableCollection<Country> Countries { get { return _countryService.Get().ToObserverable<Country>(); } set { _countries = value; NotifyPropertyChanged("Countries"); } }
+        #endregion
+        #region properties
+                public ObservableCollection<Country> Countries { get { return _countryService.Get().ToObserverable<Country>(); } set { _countries = value; NotifyPropertyChanged("Countries"); } }
         
 
-        public City SelectedCity { get { return _city; } set { _city = value; NotifyPropertyChanged("SelectedCity"); } }
-        public Hotel SelectedHotel { get { return _hotel; } set { _hotel = value; NotifyPropertyChanged("SelectedHotel"); NotifyPropertyChanged("Selected"); } }
-        private bool isVisible;
-        public bool IsVisible
-        {
-            get { return isVisible; }
-            set { isVisible = value; NotifyPropertyChanged("IsVisible"); }
+                public City SelectedCity { get { return _city; } set { _city = value; NotifyPropertyChanged("SelectedCity"); } }
+                public Hotel SelectedHotel { get { return _hotel; } set { _hotel = value; NotifyPropertyChanged("SelectedHotel"); NotifyPropertyChanged("Selected"); } }
+                public bool IsVisible
+                {
+                    get { return _isVisible; }
+                    set { _isVisible = value; NotifyPropertyChanged("IsVisible"); }
 
-        }
-        public Country SelectedCountry { get => _selectedCountry; set { _selectedCountry = value; NotifyPropertyChanged("SelectedCountry");}
-        }
-        public bool Selected { get { if (SelectedHotel == null) return false; else return true; } }
-
+                }
+                public Country SelectedCountry { get => _selectedCountry; set { _selectedCountry = value; NotifyPropertyChanged("SelectedCountry");}
+                }
+                public bool Selected { get { if (SelectedHotel == null) return false; else return true; } }
+        #endregion
+        #region Methods
         public PlacesViewModal(IService<Country> countryService,IService<City> cityService)
         {
             _countryService = countryService;
             _cityService = cityService;
             
-            isVisible = false;
+            _isVisible = false;
 
 
 
@@ -51,20 +54,22 @@ namespace TravelManager.VIewModal
         {
             if (t == true)
             {
-                isVisible = true;
+                _isVisible = true;
 
             }
             else
-                isVisible = false;
+                _isVisible = false;
             NotifyPropertyChanged("IsVisible");
             NotifyPropertyChanged("Countries");
         }
-
+        #endregion
+        #region notify
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }

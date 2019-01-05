@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal.Services
 {
-    class HotelService:AllServices<Hotel>
+    class HotelService:GenericService<Hotel>
 
     {
         DbContext _context;

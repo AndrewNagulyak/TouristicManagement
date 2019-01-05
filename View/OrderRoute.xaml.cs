@@ -10,24 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TravelManager.VIewModal;
+
 namespace TravelManager.View
 {
     /// <summary>
-    /// Логика взаимодействия для Routes.xaml
+    /// Логика взаимодействия для OrderRoute.xaml
     /// </summary>
-    public interface IViewModal<T>
-    { }
-    public partial class Routes : UserControl
+    public partial class OrderRoute : Window
     {
-        public Routes( IViewModal<RoutesViewModal> routesViewModal)
+        public OrderRoute(IViewModal<OrderViewModal> orderViewModal)
         {
             InitializeComponent();
-            DataContext = routesViewModal;
-        }
+            DataContext = orderViewModal;
 
-     
+        }
     }
 }

@@ -7,20 +7,15 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal.Services
 {
-    class RouteService : GenericService<Route>
+    class OrderService : GenericService<Order>
     {
         DbContext _context;
 
-        public RouteService(DbContext context) : base(context)
+        public OrderService(DbContext context) : base(context)
         {
             _context = context;
 
             //ts = _context.Routes.ToList();
-        }
-        public override IEnumerable<Route> Get()
-        {
-            IEnumerable<Route> countries = base.GetWithInclude(x => x.ToCity,p=>p.Hotel,z=>z.FromCity);
-            return countries;
         }
     }
 }

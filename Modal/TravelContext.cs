@@ -20,6 +20,8 @@ namespace TravelManager.Modal
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<Route> Routes { get; set; }
+        public DbSet<Tourist> Tourists { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             

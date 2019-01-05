@@ -29,10 +29,15 @@ namespace TravelManager.View
 
             container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<Order>, OrderService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<Tourist>, TouristService>(new InjectionConstructor(new object[] { travelContext }));
+
+
             container.RegisterType<IService<Hotel>, HotelService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IViewModal<UpdateServiceViewModal>, UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(), container.Resolve<IService<Route>>(), container.Resolve<IService<City>>(), container.Resolve<IService<Hotel>>(), container.Resolve<PlacesViewModal>() }));
             container.RegisterType<IViewModal<RoutesViewModal>, RoutesViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Route>>() }));
+
 
 
         }
@@ -111,6 +116,7 @@ namespace TravelManager.View
                 return routes;
             }
         }
+
         private static Countries countries;
         public static Countries Countries
         {
@@ -132,6 +138,11 @@ namespace TravelManager.View
             }
         }
 
+        public static OrderRoute OrderRoute { get => orderRoute; set => orderRoute = value; }
+
+        private static OrderRoute orderRoute;
+
+
         public static void SetPage(UserControl control)
         {
             Main.SetPage(control);
@@ -140,6 +151,15 @@ namespace TravelManager.View
         public static void SetMenu(UserControl control)
         {
             Main.SetMenu(menu);
+        }
+        public static void OpenWindow(Route r)
+        {
+            container.RegisterType<IViewModal<OrderViewModal>, OrderViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Route>>(),container.Resolve<IService<Order>>(),container.Resolve<IService<Tourist>>(),r }));
+            OrderRoute = container.Resolve<OrderRoute>();
+            OrderRoute.Owner = App.Current.MainWindow;
+
+            OrderRoute.Show();
+
         }
         public static void SetWindow(Window w)
         {

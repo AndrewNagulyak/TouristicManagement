@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>packages\Unity.5.8.13\lib\net46\CommonServiceLocator.dll</HintPath>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
@@ -45,6 +45,15 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
@@ -57,7 +66,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -126,8 +135,16 @@
     <Compile Include="Migrations\201901051312145_MigrateDB6.Designer.cs">
       <DependentUpon>201901051312145_MigrateDB6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901051935017_MigrateDB7.cs" />
+    <Compile Include="Migrations\201901051935017_MigrateDB7.Designer.cs">
+      <DependentUpon>201901051935017_MigrateDB7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051940385_MigrateDB8.cs" />
+    <Compile Include="Migrations\201901051940385_MigrateDB8.Designer.cs">
+      <DependentUpon>201901051940385_MigrateDB8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Modal\AllServices.cs" />
+    <Compile Include="Modal\Services\GenericService.cs" />
     <Compile Include="Modal\Authentification\AnonymousIdentity.cs" />
     <Compile Include="Modal\Authentification\AuthenticationService.cs" />
     <Compile Include="Modal\Base.cs" />
@@ -138,7 +155,9 @@
     <Compile Include="Modal\Services\CityService.cs" />
     <Compile Include="Modal\Services\CountryService.cs" />
     <Compile Include="Modal\Services\HotelService.cs" />
+    <Compile Include="Modal\Services\OrderService.cs" />
     <Compile Include="Modal\Services\RouteService.cs" />
+    <Compile Include="Modal\Services\TouristService.cs" />
     <Compile Include="Modal\Tourist.cs" />
     <Compile Include="Modal\TravelContext.cs" />
     <Compile Include="Modal\City.cs" />
@@ -146,6 +165,7 @@
     <Compile Include="Modal\Hotel.cs" />
     <Compile Include="Modal\Route.cs" />
     <Compile Include="Modal\User.cs" />
+    <Compile Include="VIewModal\OrderViewModal.cs" />
     <Compile Include="VIewModal\PlacesViewModal.cs" />
     <Compile Include="VIewModal\DelegateCommand.cs" />
     <Compile Include="VIewModal\AuthenticationViewModal.cs" />
@@ -166,6 +186,9 @@
     </Compile>
     <Compile Include="View\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderRoute.xaml.cs">
+      <DependentUpon>OrderRoute.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages.cs" />
     <Compile Include="View\RouteControl.xaml.cs">
@@ -206,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrderRoute.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -256,6 +283,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901051312145_MigrateDB6.resx">
       <DependentUpon>201901051312145_MigrateDB6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051935017_MigrateDB7.resx">
+      <DependentUpon>201901051935017_MigrateDB7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051940385_MigrateDB8.resx">
+      <DependentUpon>201901051940385_MigrateDB8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

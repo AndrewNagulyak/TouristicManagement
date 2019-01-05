@@ -23,11 +23,11 @@ namespace TravelManager.Modal
     
 
  
-    public class AllServices<T> : IService<T> where T : Base
+    public class GenericService<T> : IService<T> where T : Base
     {
         DbContext _context;
         DbSet<T> _dbSet;
-        public AllServices(DbContext context)
+        public GenericService(DbContext context)
         {
 
             _context = context;
@@ -72,7 +72,7 @@ namespace TravelManager.Modal
         public virtual IEnumerable<T> Get()
         {
             return _dbSet.ToList();
-        }
+        }  
         public virtual ObservableCollection<T> GetObservable()
         {
             List<T> ts = _dbSet.AsNoTracking().ToList();
@@ -96,12 +96,7 @@ namespace TravelManager.Modal
             return Include(includeProperties).ToList();
         }
 
-        protected IEnumerable<T> GetWithInclude(Func<T, bool> predicate,
-            params Expression<Func<T, object>>[] includeProperties)
-        {
-            var query = Include(includeProperties);
-            return query.Where(predicate).ToList();
-        }
+      
 
         private IQueryable<T> Include(params Expression<Func<T, object>>[] includeProperties)
         {

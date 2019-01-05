@@ -16,11 +16,12 @@ namespace TravelManager.VIewModal
 
     public class AuthenticationViewModel :  INotifyPropertyChanged,IViewModal<AuthenticationViewModel>
     {
+        #region fields
         private readonly IAuthenticationService _authenticationService;
-        private readonly DelegateCommand _loginCommand;
         private string _username;
         private string _status;
         private bool isActive;
+        #endregion 
         public AuthenticationViewModel(IAuthenticationService authenticationService)
         {
             try
@@ -64,8 +65,10 @@ namespace TravelManager.VIewModal
 
         #region Commands
         public DelegateCommand LoginCommand { get { return _loginCommand; } }
-        #endregion
+        private readonly DelegateCommand _loginCommand;
 
+        #endregion
+        #region Methods
         private async Task Login(object parameter)
         {
             PasswordBox passwordBox = parameter as PasswordBox;
@@ -131,7 +134,7 @@ namespace TravelManager.VIewModal
         }
 
 
-
+#endregion
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
 

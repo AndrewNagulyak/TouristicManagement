@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal.Services
 {
-    class CityService : AllServices<City>
+    class CityService : GenericService<City>
     {
         DbContext _context;
 

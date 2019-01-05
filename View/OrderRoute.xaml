@@ -1,0 +1,85 @@
+﻿<Window x:Class="TravelManager.View.OrderRoute"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelManager.View"
+        mc:Ignorable="d"
+        Title="OrderRoute" Height="800" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="8*"></RowDefinition>
+            <RowDefinition Height ="4*"></RowDefinition>
+            <RowDefinition Height ="3*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0"  Background="WhiteSmoke" Grid.Column="2" >
+            <TextBlock Margin="10,10,10,10" Foreground="Gray" FontSize="14" Width ="60" Height ="20" Text="Tour Id =" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="00,10,10,10" Foreground="Gray" FontSize="14" Width ="229" Height ="20" Text="{Binding Route.Id}" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Background="White"  Foreground="DarkRed" Width="330"  Height ="50">
+            <TextBlock Margin="20,5,0,0" FontSize="30" Width="150" Text="{Binding Route.Price}" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock  FontSize="12" Width="50" Text="( For All )" VerticalAlignment="Top" ></TextBlock>
+            </TextBlock>
+
+            <TextBlock Margin="50,10,10,2" Foreground="Black" FontSize="14" Width ="80" Height ="20" Text="Departure :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="2,10,10,10" Foreground="Black"  FontSize="14" Width ="145" Height ="20" Text="{Binding Route.StartDate}" VerticalAlignment="Top" ></TextBlock>
+
+            <TextBlock Margin="50,20,10,0" Foreground="Black" FontSize="14" Width ="46" Height ="20" Text="From :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="0,20,10,10" Foreground="Black" FontSize="14" Width ="64" Height ="20" Text="{Binding Route.FromCity}" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="10,20,10,0" Foreground="Black" FontSize="14" Width ="27" Height ="20" Text="By :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="0,20,10,10" Foreground="Black" FontSize="14" Width ="79" Height ="20" Text="{Binding Route.transport}" VerticalAlignment="Top" ></TextBlock>
+
+            <TextBlock Margin="50,20,10,0" Foreground="Black" FontSize="14" Width ="83" Height ="20" Text="ServiceType :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="0,20,10,10" Foreground="Black" FontSize="14" Width ="97" Height ="20" Text="{Binding Route.Hotel.FoodState}" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="50,10,10,0" Foreground="Black" FontSize="14" Width ="105" Height ="20" Text="TouristAmount :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,10,10,10" Foreground="Black" FontSize="14" Width ="79" Height ="20" Text="{Binding Route.TouristAmount}" VerticalAlignment="Top" ></TextBlock>
+
+            <TextBlock Margin="50,20,10,0" Foreground="Black" FontSize="14" Width ="36" Height ="20" Text="To :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="0,20,10,10" Foreground="Black" FontSize="14" Width ="64" Height ="20" Text="{Binding Route.ToCity}" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="10,20,10,0" Foreground="Black" FontSize="14" Width ="27" Height ="20" Text="By :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="0,20,10,10" Foreground="Black" FontSize="14" Width ="79" Height ="20" Text="{Binding Route.transport}" VerticalAlignment="Top" ></TextBlock>
+
+        </WrapPanel>
+        <StackPanel Grid.Row="1"  Background="WhiteSmoke" Grid.Column="0" >
+            <TextBlock Margin="30,10,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="Name :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="30,10,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="Address :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="30,10,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="Site :" VerticalAlignment="Top" ></TextBlock>
+            <TextBlock Margin="30,20,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="Describe :" VerticalAlignment="Top" ></TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="1"  Background="WhiteSmoke" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock Margin="10,10,0,0" Foreground="DarkCyan" FontSize="16" Width ="417" Height ="20" Text="{Binding Route.Hotel.Name}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Margin="10,40,400,0" Foreground="DarkCyan" FontSize="16" Height ="20" Text="{Binding Route.Hotel.Addres}" VerticalAlignment="Top" />
+            <TextBlock Margin="10,70,400,0" Foreground="DarkCyan" FontSize="16" Height ="20" Text="{Binding Route.Hotel.Site}" VerticalAlignment="Top" />
+            <TextBlock Margin="10,110,400,0" Foreground="DarkCyan" FontSize="16" Height ="69" Text="{Binding Route.Hotel.Describe}" VerticalAlignment="Top" />
+
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock  FontSize="20" Height="40" Text="Order" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <WrapPanel Grid.Row="2"  Background="WhiteSmoke" Grid.ColumnSpan="3" Margin="0,30,0,0" >
+            <TextBlock Margin="30,30,10,0" Foreground="Black" FontSize="16" Width ="55" Height ="20" Text="Name :" VerticalAlignment="Top" />
+            <TextBox Margin="0,32,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="{Binding Tourist.Name}" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="SurName :" VerticalAlignment="Top" />
+            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="{Binding Touris.Surname}" VerticalAlignment="Top" />
+            <TextBlock Margin="40,30,10,0" Foreground="Black" FontSize="16" Width ="43" Height ="20" Text="Mail :" VerticalAlignment="Top" />
+            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="258" Height ="20" Text="{Binding Tourist.Mail}" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="60" Height ="20" Text="Mobile :" VerticalAlignment="Top" />
+            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="20" Text="{Binding Tourist.Phone}" VerticalAlignment="Top" />
+            <Grid>
+                <Button Content="Delete Route" Margin="40,-148,-68,138"   Height="60" Width="90" Command="{Binding DeleteRouteCommand}"></Button>
+                <Button Content="Confirm" Height="60" Width="90" Margin="814,5,-842,-15"></Button>
+            </Grid>
+
+
+        </WrapPanel>
+        <Image Source="{Binding Route.Hotel.Image}" Grid.Row="0" Grid.ColumnSpan="2"
+               />
+
+    </Grid>
+</Window>

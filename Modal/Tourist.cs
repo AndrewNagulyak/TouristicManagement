@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace TravelManager.Modal
 {
-    class Tourist
+    public class Tourist:Base
     {
         [Key]
         [Column(Order = 1)]
         public string Phone { get; set; }
-
         public string Name { get; set; }
 
         public string Email { get; set; }

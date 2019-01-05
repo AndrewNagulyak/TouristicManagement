@@ -11,7 +11,7 @@ using TravelManager.VIewModal;
 namespace TravelManager.Modal.Services
 {
 
-    public class CountryService : AllServices<Country>
+    public class CountryService : GenericService<Country>
     {
         public CountryService(DbContext context) : base(context)
         {
