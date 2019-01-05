@@ -15,8 +15,14 @@ namespace TravelManager.Modal.Services
     {
         public CountryService(DbContext context) : base(context)
         {
+
         }
-           
+        public override IEnumerable<Country> Get()
+        {
+            IEnumerable<Country> countries = base.GetWithInclude(x => x.Cities);
+            return countries;
+        }
+
     }
 }
 

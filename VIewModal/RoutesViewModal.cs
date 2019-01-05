@@ -13,7 +13,7 @@ namespace TravelManager.VIewModal
 {
     public class RoutesViewModal:IViewModal<RoutesViewModal>,INotifyPropertyChanged
     {
-        //public List<Route> Route{ get => routeService.Get().ToList(); }
+        public List<Route> Route{ get => routeService.Get().ToList(); }
         private IService<Route> routeService;
 
         public RoutesViewModal(IService<Route> routeService)

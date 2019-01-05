@@ -42,6 +42,12 @@ namespace TravelManager.VIewModal
         private readonly DelegateCommand _addhotel;
         private readonly DelegateCommand _addroute;
         private readonly DelegateCommand _openfile;
+        private readonly DelegateCommand _delcountry;
+        private readonly DelegateCommand _editcountry;
+        private readonly DelegateCommand _delcity;
+        private readonly DelegateCommand _editcity;
+        private readonly DelegateCommand _delhotel;
+        private readonly DelegateCommand _edithotel;
         #endregion
         #region fields
         private ObservableCollection<City> fromcities;
@@ -59,6 +65,7 @@ namespace TravelManager.VIewModal
         private Route touristRoute;
         private IService<Country> countryService;
         private IService<Route> routeService;
+        private Country country;
         #endregion
         #region properties
         public Route TouristRoute { get { return touristRoute; } set { if (value != null) touristRoute = new Route(null,null,null) {Id=value.Id}; NotifyPropertyChanged("TouristRoute"); } }
@@ -70,8 +77,12 @@ namespace TravelManager.VIewModal
         public string[] FoodState { get { return foodstate; } }
         public string[] Transport { get { return transport; } }
 
+        public Country Country { get { return country; } set { if (value != null) country = new Country() { CountryName = value.CountryName, Cities = value.Cities, Id = value.Id }; NotifyPropertyChanged("Country"); } }
 
         public ObservableCollection<City> Cities { get { return cityService.Get().ToObserverable<City>(); ; } }
+        public ObservableCollection<Hotel> Hotels { get { return hotelService.Get().ToObserverable<Hotel>(); ; } }
+
+
         public ObservableCollection<City> FromCityList { get { return cityService.Get(i=>i.State==CityState.From).ToObserverable<City>(); } }
         public City City { get { return city; } set { if (value != null) city = new City() { CityName = value.CityName,Country = value.Country, Id = value.Id }; NotifyPropertyChanged("City"); } }
 
@@ -82,6 +93,12 @@ namespace TravelManager.VIewModal
         public DelegateCommand VisibleCommand { get { return _visible; } }
         public DelegateCommand addCity { get { return _addcity; } }
         public DelegateCommand addCountry { get { return _addcountry; } }
+        public DelegateCommand DeleteCountryCommand { get { return _delcountry; } }
+        public DelegateCommand EditCountryCommand { get { return _editcountry; } }
+        public DelegateCommand DeleteCityCommand { get { return _delcity; } }
+        public DelegateCommand EditCityCommand { get { return _editcity; } }
+        public DelegateCommand DeleteHotelCommand { get { return _delhotel; } }
+        public DelegateCommand EditHotelCommand { get { return _edithotel; } }
         public DelegateCommand addHotel { get { return _addhotel; } }
         public DelegateCommand AddTouristRouteCommand { get { return _addroute; } }
         public PlacesViewModal CountriesViewModal
@@ -124,6 +141,13 @@ namespace TravelManager.VIewModal
             _addcountry = new DelegateCommand((Action<object>)AddCountry);
             _addroute = new DelegateCommand((Action<object>)AddTouristRoute);
             _addhotel = new DelegateCommand((Action<object>)AddHotel);
+            _editcity = new DelegateCommand((Action<object>)EditCity);
+            _editcountry = new DelegateCommand((Action<object>)EditCountry);
+            _delcity = new DelegateCommand((Action<object>)DeleteCity);
+            _delcountry = new DelegateCommand((Action<object>)DeleteCountry);
+            _delhotel = new DelegateCommand((Action<object>)DeleteHotel);
+            _edithotel = new DelegateCommand((Action<object>)EditHotel);
+
             _openfile = new DelegateCommand((Action<object>)Openfile);
             City = new City();
             CitiesTourist = new List<City>();
@@ -161,6 +185,10 @@ namespace TravelManager.VIewModal
            
                 City city = new City() { CityName = City.CityName, Country = City.Country, State = City.State,Km=City.Km};
                 cityService.Add(city);
+            City.CityName = null;
+            City.Country = null;
+            
+            City.Km = 0;
             OnUpdate(null, null);
 
         }
@@ -177,6 +205,10 @@ namespace TravelManager.VIewModal
                 Route route = new Route(city1, city,hotel) { TouristAmount = TouristRoute.TouristAmount, transport = TouristRoute.transport,type = Modal.Type.Vacation, StartDate = TouristRoute.StartDate, FinishDate = TouristRoute.FinishDate };
                 route.Price = (city.Km - city1.Km) / 2 + (route.FinishDate.DayOfYear - route.StartDate.DayOfYear) * hotel.PricePerNight;
                 routeService.Add(route);
+                TouristRoute = null;
+                CountriesViewModal.SelectedCountry = null;
+                OnUpdate(null, null);
+
             }
             catch (DbEntityValidationException e)
             {
@@ -197,6 +229,17 @@ namespace TravelManager.VIewModal
         {
             Hotel hotel = new Hotel() { City = Hotel.City,Image=Hotel.Image, Addres = Hotel.Addres, Stars = Hotel.Stars, Site = Hotel.Site, FoodState = Hotel.FoodState, Describe = Hotel.Describe, Name = Hotel.Name,PricePerNight=Hotel.PricePerNight };
             hotelService.Add(hotel);
+            Hotel.Addres = null;
+            Hotel.Name = null;
+            Hotel.Image = null;
+            Hotel.Site = null;
+            Hotel.Describe = null;
+            Hotel.Stars = 0;
+            HotelCountry = null;
+            Hotel.City = null;
+            Hotel.PricePerNight = 0;
+
+
             OnUpdate(null, null);
             
         }
@@ -204,9 +247,9 @@ namespace TravelManager.VIewModal
         {
             try
             {
-
-                Country country = new Country() { CountryName = countryparam.CountryName };
+                Country country = new Country() { CountryName = CountryParam.CountryName };
                 countryService.Add(country);
+                countryparam.CountryName = null;
                 OnUpdate(null, null);
             }
             catch (DbEntityValidationException e)
@@ -224,12 +267,107 @@ namespace TravelManager.VIewModal
                 throw;
             }
         }
+        private void EditCity(object o)
+        {
+            try
+            {
+                City c = cityService.FindById(City.Id);
+                
+                cityService.Update(c);
+                OnUpdate(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void DeleteCity(object o)
+        {
+            try
+            {
+                cityService.Remove(cityService.FindById(City.Id));
+                OnUpdate(null, null);
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    MessageBox.Show("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:" +
+                        eve.Entry.Entity.GetType().Name + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        MessageBox.Show("- Property: \"{0}\", Error: \"{1}\"" +
+                            ve.PropertyName + ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+        }
+        private void EditCountry(object o)
+        {
+            try
+            {
+                Country r = countryService.FindById(CountryParam.Id);
+                countryService.Update(r);
+                OnUpdate(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void DeleteCountry(object o)
+        {
+            try
+            {
+
+                Country c = countryService.FindById(Country.Id);
+                countryService.Remove(c);
+                OnUpdate(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void EditHotel(object o)
+        {
+            try
+            {
+                Hotel h = hotelService.FindById(Hotel.Id);
+                hotelService.Update(h);
+                OnUpdate(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void DeleteHotel(object o)
+        {
+            try
+            {
+
+                Hotel h = hotelService.FindById(Hotel.Id);
+                hotelService.Remove(h);
+                OnUpdate(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         public void OnUpdate(object sender, NotifyCollectionChangedEventArgs e)
         {
             NotifyPropertyChanged("Countries");
             NotifyPropertyChanged("Cities");
-            
+            NotifyPropertyChanged("TouristRoute");
+            NotifyPropertyChanged("CountryParam");
 
+            NotifyPropertyChanged("Hotels");
+
+
+            NotifyPropertyChanged("City");
             NotifyPropertyChanged("Routes");
             NotifyPropertyChanged("Countrycities");
             NotifyPropertyChanged("Hotel");

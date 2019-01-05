@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace TravelManager.Modal
        public string Name { get; set; }
        public FoodState FoodState { get; set; }
        public string Describe { get; set; }
+       [Required]
        public City City { get; set; }
        public int PricePerNight { get; set; }
        public Stars Stars { get; set; }

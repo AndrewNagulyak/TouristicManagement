@@ -98,17 +98,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201901040639011_MigrateDB.cs" />
-    <Compile Include="Migrations\201901040639011_MigrateDB.Designer.cs">
-      <DependentUpon>201901040639011_MigrateDB.cs</DependentUpon>
+    <Compile Include="Migrations\201901051134499_MigrateDB1.cs" />
+    <Compile Include="Migrations\201901051134499_MigrateDB1.Designer.cs">
+      <DependentUpon>201901051134499_MigrateDB1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901040716392_MigrateDB1.cs" />
-    <Compile Include="Migrations\201901040716392_MigrateDB1.Designer.cs">
-      <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
+    <Compile Include="Migrations\201901051137231_MigrateDB.cs" />
+    <Compile Include="Migrations\201901051137231_MigrateDB.Designer.cs">
+      <DependentUpon>201901051137231_MigrateDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901042309301_MigrateDB2.cs" />
-    <Compile Include="Migrations\201901042309301_MigrateDB2.Designer.cs">
-      <DependentUpon>201901042309301_MigrateDB2.cs</DependentUpon>
+    <Compile Include="Migrations\201901051137587_MigrateDB2.cs" />
+    <Compile Include="Migrations\201901051137587_MigrateDB2.Designer.cs">
+      <DependentUpon>201901051137587_MigrateDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051138231_MigrateDB3.cs" />
+    <Compile Include="Migrations\201901051138231_MigrateDB3.Designer.cs">
+      <DependentUpon>201901051138231_MigrateDB3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051144043_MigrateDB4.cs" />
+    <Compile Include="Migrations\201901051144043_MigrateDB4.Designer.cs">
+      <DependentUpon>201901051144043_MigrateDB4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051251586_MigrateDB5.cs" />
+    <Compile Include="Migrations\201901051251586_MigrateDB5.Designer.cs">
+      <DependentUpon>201901051251586_MigrateDB5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051312145_MigrateDB6.cs" />
+    <Compile Include="Migrations\201901051312145_MigrateDB6.Designer.cs">
+      <DependentUpon>201901051312145_MigrateDB6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\AllServices.cs" />
@@ -220,14 +236,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201901040639011_MigrateDB.resx">
-      <DependentUpon>201901040639011_MigrateDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901051134499_MigrateDB1.resx">
+      <DependentUpon>201901051134499_MigrateDB1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901040716392_MigrateDB1.resx">
-      <DependentUpon>201901040716392_MigrateDB1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901051137231_MigrateDB.resx">
+      <DependentUpon>201901051137231_MigrateDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901042309301_MigrateDB2.resx">
-      <DependentUpon>201901042309301_MigrateDB2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901051137587_MigrateDB2.resx">
+      <DependentUpon>201901051137587_MigrateDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051138231_MigrateDB3.resx">
+      <DependentUpon>201901051138231_MigrateDB3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051144043_MigrateDB4.resx">
+      <DependentUpon>201901051144043_MigrateDB4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051251586_MigrateDB5.resx">
+      <DependentUpon>201901051251586_MigrateDB5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051312145_MigrateDB6.resx">
+      <DependentUpon>201901051312145_MigrateDB6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

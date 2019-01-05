@@ -19,7 +19,12 @@ namespace TravelManager.Modal.Services
 
            
         }
-       
+        public override IEnumerable<City> Get()
+        {
+            IEnumerable<City> citiess = base.GetWithInclude(x => x.Hotels);
+            return citiess;
+        }
+
 
     }
 }

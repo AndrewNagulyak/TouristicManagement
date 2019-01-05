@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace TravelManager.Modal
         public Transport transport { get; set; }
         public DateTime FinishDate { get; set; }
         public City FromCity { get; set; }
+        [Required]
         public City ToCity { get; set; }
         public int Price { get; set; }
         public Hotel Hotel { get; set; }

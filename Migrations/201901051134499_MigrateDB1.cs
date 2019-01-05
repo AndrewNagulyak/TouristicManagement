@@ -7,14 +7,13 @@ namespace TravelManager.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Cities", "Km", c => c.Int(nullable: false));
-            AddColumn("dbo.Hotels", "PricePerNight", c => c.Int(nullable: false));
+            
+            
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Hotels", "PricePerNight");
-            DropColumn("dbo.Cities", "Km");
+           
         }
     }
 }

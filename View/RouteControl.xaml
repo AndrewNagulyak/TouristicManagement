@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TravelManager.View"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="350">
-    <Grid>
+    <Grid Background="LightGray">
         
         <Grid.RowDefinitions>
             <RowDefinition Height ="4*"></RowDefinition>
@@ -22,7 +22,8 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Image Source="{Binding Hotel.Image}" Grid.Row="0" Grid.ColumnSpan="2" ></Image>
+        <Image Source="{Binding Hotel.Image}" Grid.Row="0" Grid.ColumnSpan="2" 
+               Stretch="Uniform"/>
         <DockPanel Grid.Row="1"  Background="WhiteSmoke" Grid.ColumnSpan="2" >
             <TextBlock FontSize="14" Text="{Binding Hotel.Name}"></TextBlock>
             <TextBlock FontSize="14" Text="{Binding Hotel.Stars}"></TextBlock>

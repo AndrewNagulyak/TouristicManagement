@@ -19,6 +19,7 @@ namespace TravelManager.Modal
         }
         public string CityName { get; set; }
         public CityState State { get;set; }
+        [Required]
         public Country Country { get; set; }
         public int Km { get; set; }
         public virtual ICollection<Hotel> Hotels { get; set; }

@@ -18,7 +18,7 @@
     <DockPanel Background="WhiteSmoke">
 
 
-        <TabControl>
+        <TabControl RenderTransformOrigin="0.467,0.573">
             <TabItem >
                 <Grid x:Name="Routes" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
                     <Grid.ColumnDefinitions>
@@ -79,33 +79,34 @@
                 <Grid x:Name="Main" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="65*"/>
                         <ColumnDefinition Width="201*"/>
                         <ColumnDefinition Width="519*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="AddCunttry" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="56,105,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCountry}"/>
-                    <Button x:Name="AddCity" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="67,418,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCity}"/>
-                    <TextBox x:Name="CountryName" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="42,61,0,0" Text="{Binding CountryParam.CountryName}" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="CityName" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="42,248,0,0"  Text="{Binding City.CityName}"  VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="CityCountry" Grid.Column="2" HorizontalAlignment="Left" Margin="42,288,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Countries}" SelectedItem="{Binding City.Country}"/>
+                    <Button x:Name="AddCunttry" Content="Button" Grid.Column="3" HorizontalAlignment="Left" Margin="56,105,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCountry}"/>
+                    <Button x:Name="AddCity" Content="Button" Grid.Column="3" HorizontalAlignment="Left" Margin="67,418,0,0" VerticalAlignment="Top" Width="75" Command="{Binding addCity}"/>
+                    <TextBox x:Name="CountryName" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="42,61,0,0" Text="{Binding CountryParam.CountryName}" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="CityName" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="42,248,0,0"  Text="{Binding City.CityName}"  VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="CityCountry" Grid.Column="3" HorizontalAlignment="Left" Margin="42,288,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Countries}" SelectedItem="{Binding City.Country}"/>
 
-                    <ComboBox Grid.Column="2" HorizontalAlignment="Left" Margin="42,328,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding State}" SelectedItem="{Binding City.State}"></ComboBox>
-                    <TextBox x:Name="CityKm" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="88,371,0,0"  Text="{Binding City.Km}"  VerticalAlignment="Top" Width="74"/>
-                    <TextBox x:Name="Name" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="162,49,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="195" Text="{Binding Hotel.Name}"/>
-                    <TextBox x:Name="site" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="162,97,0,0" TextWrapping="Wrap" Text="{Binding Hotel.Site}" VerticalAlignment="Top" Width="195"/>
-                    <TextBox x:Name="Address" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="162,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Text="{Binding Hotel.Addres}"/>
-                    <ComboBox x:Name="stars" Grid.Column="3" HorizontalAlignment="Left" Margin="290,189,0,0" VerticalAlignment="Top" Width="67" ItemsSource="{Binding Stars}" SelectedItem="{Binding Hotel.Stars}"/>
-                    <Button Command="{Binding addHotel}" x:Name="button2" Content="Button" Grid.Column="3" HorizontalAlignment="Left" Margin="282,485,0,0" VerticalAlignment="Top" Width="75"/>
-                    <TextBox x:Name="Price" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="162,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Text="{Binding Hotel.PricePerNight}"/>
+                    <ComboBox Grid.Column="3" HorizontalAlignment="Left" Margin="42,328,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding State}" SelectedItem="{Binding City.State}"></ComboBox>
+                    <TextBox x:Name="CityKm" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="88,371,0,0"  Text="{Binding City.Km}"  VerticalAlignment="Top" Width="74"/>
+                    <TextBox x:Name="Name" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="162,49,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="195" Text="{Binding Hotel.Name}"/>
+                    <TextBox x:Name="site" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="162,97,0,0" TextWrapping="Wrap" Text="{Binding Hotel.Site}" VerticalAlignment="Top" Width="195"/>
+                    <TextBox x:Name="Address" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="162,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Text="{Binding Hotel.Addres}"/>
+                    <ComboBox x:Name="stars" Grid.Column="4" HorizontalAlignment="Left" Margin="290,189,0,0" VerticalAlignment="Top" Width="67" ItemsSource="{Binding Stars}" SelectedItem="{Binding Hotel.Stars}"/>
+                    <Button Command="{Binding addHotel}" x:Name="button2" Content="Button" Grid.Column="4" HorizontalAlignment="Left" Margin="282,485,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="Price" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="162,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Text="{Binding Hotel.PricePerNight}"/>
 
-                    <Button Margin="282,433,162,132" Height="23" Name="BrowseButton" Width="75" Command="{Binding OpenFile}" Grid.Column="3">Browse
+                    <Button Margin="282,433,162,132" Height="23" Name="BrowseButton" Width="75" Command="{Binding OpenFile}" Grid.Column="4">Browse
                     </Button>
-                    <ComboBox x:Name="comboBox1" Text="" Grid.Column="3" HorizontalAlignment="Left" Margin="162,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countries}" SelectedItem="{Binding HotelCountry}"/>
-                    <ComboBox x:Name="comboBox3" Grid.Column="3" HorizontalAlignment="Left" Margin="268,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countrycities}" SelectedItem="{Binding Hotel.City}"/>
-                    <Label x:Name="label" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="67,30,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label1" Content="Hotel" Grid.Column="3" HorizontalAlignment="Left" Margin="237,23,0,0" VerticalAlignment="Top"/>
-                    <ComboBox Grid.Column="3" HorizontalAlignment="Left" Margin="162,189,0,0" VerticalAlignment="Top" Width="114" ItemsSource="{Binding FoodState}" SelectedItem="{Binding Hotel.FoodState}"/>
-                    <RichTextBox Grid.Column="3" HorizontalAlignment="Left" Height="100" Margin="162,314,0,0" VerticalAlignment="Top" Width="195">
+                    <ComboBox x:Name="comboBox1" Text="" Grid.Column="4" HorizontalAlignment="Left" Margin="162,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countries}" SelectedItem="{Binding HotelCountry}"/>
+                    <ComboBox x:Name="comboBox3" Grid.Column="4" HorizontalAlignment="Left" Margin="268,249,0,0" VerticalAlignment="Top" Width="89" ItemsSource="{Binding Countrycities}" SelectedItem="{Binding Hotel.City}"/>
+                    <Label x:Name="label" Content="Label" Grid.Column="3" HorizontalAlignment="Left" Margin="67,30,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label1" Content="Hotel" Grid.Column="4" HorizontalAlignment="Left" Margin="237,23,0,0" VerticalAlignment="Top"/>
+                    <ComboBox Grid.Column="4" HorizontalAlignment="Left" Margin="162,189,0,0" VerticalAlignment="Top" Width="114" ItemsSource="{Binding FoodState}" SelectedItem="{Binding Hotel.FoodState}"/>
+                    <RichTextBox Grid.Column="4" HorizontalAlignment="Left" Height="100" Margin="162,314,0,0" VerticalAlignment="Top" Width="195">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Text="{Binding Hotel.Describe}"/>
@@ -113,6 +114,55 @@
                         </FlowDocument>
                     </RichTextBox>
                 </Grid>
+            </TabItem>
+            <TabItem>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="31*"></ColumnDefinition>
+                        <ColumnDefinition Width="198*"></ColumnDefinition>
+                        <ColumnDefinition Width="571*"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid  BorderBrush="Transparent" SelectedItem="{Binding City,Mode=TwoWay}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Cities}" Margin="0,10,552,56" Grid.ColumnSpan="2">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Name" Binding="{Binding CityName}" Width="63" />
+                            <DataGridTextColumn Header="State" Binding="{Binding CityState}" Width="63" />
+                            <DataGridTextColumn Header="Km" Binding="{Binding Km}" Width="63" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Column="1" Margin="10,253,109,10" Command="{Binding EditCityCommand}" Content="Edit" ></Button>
+
+
+                    <Button Grid.Column="1" Margin="109,253,10,10" Command="{Binding DeleteCityCommand}" Content="Delete"></Button>
+                    <DataGrid BorderBrush="Transparent" SelectedItem="{Binding Country,Mode=TwoWay}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Countries}" Margin="0,0,98,25">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Name" Binding="{Binding CountryName}" Width="90" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Column="1" Margin="127,207,10,38" Command="{Binding EditCountryCommand}" Content="Edit" Grid.Row="1" />
+                    <Button Grid.Column="1" Margin="127,76,10,168" Command="{Binding DeleteCountryCommand}" Content="Delete" Grid.Row="1"/>
+                    <DataGrid  BorderBrush="WhiteSmoke" SelectedItem="{Binding Hotel,Mode=TwoWay}" AutoGenerateColumns="False" Grid.Column="2" ItemsSource="{Binding Hotels}" Margin="24,10,33,56">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="City" Binding="{Binding City.CityName}" Width="63" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="63" />
+                            <DataGridTextColumn Header="Addres" Binding="{Binding Addres}" Width="63" />
+                            <DataGridTextColumn Header="Site" Binding="{Binding Site}" Width="63" />
+                            <DataGridTextColumn Header="FoodState" Binding="{Binding FoodState}" Width="73" />
+                            <DataGridTextColumn Header="Stars" Binding="{Binding Stars}" Width="40" />
+                            <DataGridTextColumn Header="PriceNight" Binding="{Binding PricePerNight}" Width="70" />
+                            <DataGridTextColumn Header="ImagePath" Binding="{Binding Image}" Width="70" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Column="2" Margin="62,253,437,10" Command="{Binding EditHotelCommand}" Content="Edit" />
+                    <Button Grid.Column="2" Margin="408,253,91,10" Command="{Binding DeleteHotelCommand}" Content="Delete"/>
+                </Grid>
+
             </TabItem>
 
         </TabControl>
