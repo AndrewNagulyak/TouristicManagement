@@ -24,6 +24,8 @@ namespace TravelManager.View
         public UpdateService(IViewModal<UpdateServiceViewModal> updateServiceViewModal)
         {
             InitializeComponent();
+            dp1.DisplayDate = DateTime.Now;
+            dp.DisplayDate = DateTime.Now;
             DataContext = updateServiceViewModal;
         }
        

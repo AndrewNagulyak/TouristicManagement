@@ -13,11 +13,18 @@ namespace TravelManager.Modal
         [ForeignKey("Route")]
         [Column(Order = 1)]
         public Guid RouteId { get; set; }
-        Route Route { get; set; }
-
+        
+        
         [ForeignKey("Tourist")]
         [Column(Order = 2)]
-        public string TouristNumber { get; set; }
-        Tourist Tourist { get; set; }
+        public Guid TouristId { get; set; }
+        [ForeignKey("Tourist")]
+        [Column(Order = 3)]
+        public string Phone { get; set; }
+
+        public virtual Tourist Tourist { get; set; }
+
+        public virtual Route Route { get; set; }
+
     }
 }

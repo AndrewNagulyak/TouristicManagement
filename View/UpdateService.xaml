@@ -64,8 +64,8 @@
 
                         <ComboBox Margin="7,0,0,0" Width="68" ItemsSource="{Binding Transport}" SelectedIndex="{Binding TouristRoute.Transport}"></ComboBox>
 
-                        <DatePicker Margin="7,0,0,0" DisplayDate="{Binding TouristRoute.StartDate}"></DatePicker>
-                        <DatePicker Margin="7,0,0,0" DisplayDate="{Binding TouristRoute.FinishDate}"></DatePicker>
+                        <DatePicker Name="dp" Margin="7,0,0,0" SelectedDate="{Binding TouristRoute.StartDate}"></DatePicker>
+                        <DatePicker Name="dp1" Margin="7,0,0,0" SelectedDate="{Binding TouristRoute.FinishDate}"></DatePicker>
 
 
 

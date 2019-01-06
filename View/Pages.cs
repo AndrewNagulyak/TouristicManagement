@@ -116,6 +116,17 @@ namespace TravelManager.View
                 return routes;
             }
         }
+        public static OrderTicket orderticket;
+        public static OrderTicket OrderTiket
+        {
+            get
+            {
+                container.RegisterType<IViewModal<OrderTicketViewModal>, OrderTicketViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Route>>(), container.Resolve<IService<Order>>(), container.Resolve<IService<Tourist>>()}));
+
+                orderticket = container.Resolve<OrderTicket>();
+                return orderticket;
+            }
+        }
 
         private static Countries countries;
         public static Countries Countries

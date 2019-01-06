@@ -12,24 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TravelManager.VIewModal;
 
 namespace TravelManager.View
 {
     /// <summary>
-    /// Логика взаимодействия для Menu.xaml
+    /// Логика взаимодействия для Order.xaml
     /// </summary>
-    public partial class Menu : UserControl
+    public partial class OrderTicket : UserControl
     {
-        public Menu()
+        public OrderTicket(IViewModal<OrderTicketViewModal> orderTicketViewModal)
         {
-            
-
             InitializeComponent();
+            DataContext = orderTicketViewModal;
+
         }
-        private void Routes_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.Routes);
-        private void Service_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.UpdateService);
-        private void Order_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.OrderTiket);
-
-
     }
 }

@@ -30,12 +30,13 @@ namespace TravelManager.Modal
             Hotel = hotel;
             FromCity = fromcity;
             ToCity = tocity;
-            StartDate = DateTime.Today;
-            FinishDate = DateTime.Today;
+           
 
             Orders = new List<Order>();
 
         }
+        public Route()
+        { }
     }
 
 

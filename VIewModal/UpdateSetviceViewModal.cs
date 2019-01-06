@@ -69,6 +69,7 @@ namespace TravelManager.VIewModal
         private Country _countryparam;
         private City _city;
         private List<City> _citiesTourist;
+        private DateTime _now;
         private IService<City> _cityService;
         private IService<Hotel> _hotelService;
         private Country _hotelcountry;
@@ -93,7 +94,7 @@ namespace TravelManager.VIewModal
         public Country CountryParam { get { return _countryparam; } set { if (value != null) _countryparam = new Country() { CountryName = value.CountryName, Cities = value.Cities }; NotifyPropertyChanged("CountryParam"); } }
         public Country HotelCountry { get { return _hotelcountry; } set { if (value != null) _hotelcountry = new Country() { CountryName = value.CountryName, Cities = value.Cities }; NotifyPropertyChanged("HotelCountry"); NotifyPropertyChanged("Countrycities"); } }
 
-      
+        public DateTime Now { get { return _now; } set { _now = DateTime.Now; } }
 
         public Country Country { get { return _country; } set { if (value != null) _country = new Country() { CountryName = value.CountryName, Cities = value.Cities, Id = value.Id }; NotifyPropertyChanged("Country"); } }
 
@@ -123,6 +124,8 @@ namespace TravelManager.VIewModal
         public UpdateServiceViewModal(IService<Country> countryService, IService<Route> routeService, IService<City> cityService,IService<Hotel> hotelService, PlacesViewModal countryViewModal)
 
         {
+           
+
             state = Enum.GetNames(typeof(CityState))
                      .Select(x => x.ToString())
                       .ToArray();
@@ -140,6 +143,8 @@ namespace TravelManager.VIewModal
             this._cityService = cityService;
             this._countryService = countryService;
             this._hotelService = hotelService;
+            _touristRoute.StartDate = DateTime.Now;
+            _touristRoute.FinishDate = DateTime.Now;
 
             _visible = new DelegateCommand((Action<object>)Visible);
             _visible1 = new DelegateCommand((Action<object>)Visible1);
@@ -210,7 +215,7 @@ namespace TravelManager.VIewModal
 
                 City city1 = _cityService.FindById(City.Id);
                 Route route = new Route(city1, city,hotel) { TouristAmount = TouristRoute.TouristAmount, transport = TouristRoute.transport,type = Modal.Type.Vacation, StartDate = TouristRoute.StartDate, FinishDate = TouristRoute.FinishDate };
-                route.Price = (city.Km - city1.Km) / 2 + (route.FinishDate.DayOfYear - route.StartDate.DayOfYear) * hotel.PricePerNight;
+                route.Price = (city.Km - city1.Km) * 2 + (route.FinishDate.DayOfYear - route.StartDate.DayOfYear) * hotel.PricePerNight*route.TouristAmount;
                 _routeService.Add(route);
                 TouristRoute = null;
                 CountriesViewModal.SelectedCountry = null;

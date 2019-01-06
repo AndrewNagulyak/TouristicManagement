@@ -20,19 +20,14 @@
                         <TextBlock Text="Available Routes" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Margin="0,10" Height="45" Padding="0">
+                <ListViewItem Margin="0,10" Height="45" Padding="0" PreviewMouseLeftButtonUp="Order_click" >
                     <StackPanel Margin="20,0" Orientation="Horizontal">
-                        <TextBlock Text="Stash" Margin="10"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Margin="0,10" Height="45" Padding="0">
-                    <StackPanel Margin="20,0" Orientation="Horizontal">
-                        <TextBlock Text="Ticket" Margin="10"/>
+                        <TextBlock Text="Order" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Margin="0,10" Height="45" Padding="0" PreviewMouseLeftButtonUp="Service_click">
                     <StackPanel Margin="20,0" Orientation="Horizontal">
-                        <TextBlock Text="UpdateService" Margin="10"/>
+                        <TextBlock Text="Creating Routes" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Margin="0,10" Height="45" Padding="0">
