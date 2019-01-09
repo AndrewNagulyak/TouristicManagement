@@ -16,7 +16,10 @@ namespace TravelManager.VIewModal
 {
     public class RoutesViewModal : IViewModal<RoutesViewModal>, INotifyPropertyChanged
     {
+        private Country _country;
         public List<Route> Routes { get => routeService.Get().ToList(); }
+        public List<Country> Countries { get => Routes.Select(x => x.ToCity.Country).Distinct().ToList(); }
+        public Country Country { get { return _country; } set {  _country = value;  NotifyPropertyChanged("Country"); } }
         public Thickness margin
         {
             get
@@ -36,13 +39,24 @@ namespace TravelManager.VIewModal
             set
             {
                 List<UserControl> Controls = new List<UserControl>();
+                if (Country == null)
 
-                foreach (Route r in Routes)
+                    foreach (Route r in Routes)
                 {
-
                     Controls.Add(new RouteControl() { DataContext = r, Margin = margin});
                     
+
+
                 }
+                else
+                    foreach (Route r in Routes)
+                    {
+                        if(r.ToCity.Country==Country)
+                        Controls.Add(new RouteControl() { DataContext = r, Margin = margin });
+
+
+
+                    }
                 userControls = Controls;
                 NotifyPropertyChanged("UserControls");
             }

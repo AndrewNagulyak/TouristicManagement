@@ -111,6 +111,14 @@
     <Compile Include="Migrations\201901052227025_MigrateDB1.Designer.cs">
       <DependentUpon>201901052227025_MigrateDB1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901091700138_MigrateDB.cs" />
+    <Compile Include="Migrations\201901091700138_MigrateDB.Designer.cs">
+      <DependentUpon>201901091700138_MigrateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901091706026_MigrateDB2.cs" />
+    <Compile Include="Migrations\201901091706026_MigrateDB2.Designer.cs">
+      <DependentUpon>201901091706026_MigrateDB2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\Services\GenericService.cs" />
     <Compile Include="Modal\Authentification\AnonymousIdentity.cs" />
@@ -126,6 +134,8 @@
     <Compile Include="Modal\Services\OrderService.cs" />
     <Compile Include="Modal\Services\RouteService.cs" />
     <Compile Include="Modal\Services\TouristService.cs" />
+    <Compile Include="Modal\Services\UserDataService.cs" />
+    <Compile Include="Modal\Services\UserService.cs" />
     <Compile Include="Modal\Tourist.cs" />
     <Compile Include="Modal\TravelContext.cs" />
     <Compile Include="Modal\City.cs" />
@@ -133,6 +143,7 @@
     <Compile Include="Modal\Hotel.cs" />
     <Compile Include="Modal\Route.cs" />
     <Compile Include="Modal\User.cs" />
+    <Compile Include="VIewModal\CreateUserViewModal.cs" />
     <Compile Include="VIewModal\OrderTicketViewModal.cs" />
     <Compile Include="VIewModal\OrderViewModal.cs" />
     <Compile Include="VIewModal\PlacesViewModal.cs" />
@@ -149,6 +160,9 @@
     </Compile>
     <Compile Include="View\Countries.xaml.cs">
       <DependentUpon>Countries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateUser.xaml.cs">
+      <DependentUpon>CreateUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainControl.xaml.cs">
       <DependentUpon>MainControl.xaml</DependentUpon>
@@ -193,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Countries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +259,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201901052227025_MigrateDB1.resx">
       <DependentUpon>201901052227025_MigrateDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901091700138_MigrateDB.resx">
+      <DependentUpon>201901091700138_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901091706026_MigrateDB2.resx">
+      <DependentUpon>201901091706026_MigrateDB2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

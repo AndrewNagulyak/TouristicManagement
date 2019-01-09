@@ -12,18 +12,43 @@
             <RowDefinition></RowDefinition>
 
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0">
+        <DataGrid Grid.Row="0" SelectedItem="{Binding Order,Mode=TwoWay}" AutoGenerateColumns="False"  ItemsSource="{Binding Orders}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="RouteId" Binding="{Binding RouteId}" Width="90" />
+
+                <DataGridHyperlinkColumn Header="Name" Binding="{Binding Tourist.Name}" Width="80" />
+                <DataGridTextColumn Header="SurName" Binding="{Binding Tourist.Surname}" Width="80" />
+                <DataGridTextColumn Header="Mobile" Binding="{Binding Tourist.Phone}" Width="120" />
+                <DataGridTextColumn Header="From" Binding="{Binding Route.FromCity.CityName}" Width="60" />
+                <DataGridTextColumn Header="To" Binding="{Binding Route.ToCity.CityName}" Width="60" />
+                <DataGridTextColumn Header="FirstDate" Binding="{Binding Route.StartDate}" Width="80" />
+                <DataGridTextColumn Header="FinalDate" Binding="{Binding Route.FinishDate}" Width="80" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Route.Price}" Width="80" />
+                <DataGridTextColumn Header="FinalPrice" Binding="{Binding Price}" Width="80" />
+
+
+
+            </DataGrid.Columns>
         </DataGrid>
         <WrapPanel Grid.Row="1"  Background="WhiteSmoke" Grid.ColumnSpan="3" Margin="0,0,0,0" >
             <TextBlock Margin="30,30,10,0" Foreground="Black" FontSize="16" Width ="55" Height ="20" Text="Name :" VerticalAlignment="Top" />
-            <TextBox Margin="0,32,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="26" Text="{Binding Tourist.Name}" VerticalAlignment="Top" />
+            <TextBlock Margin="0,32,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="26" Text="{Binding Order.Tourist.Name}" VerticalAlignment="Top" />
             <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="20" Text="SurName :" VerticalAlignment="Top" />
-            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="25" Text="{Binding Tourist.Surname}" VerticalAlignment="Top" />
-            <TextBlock Margin="40,30,10,0" Foreground="Black" FontSize="16" Width ="43" Height ="20" Text="Mail :" VerticalAlignment="Top" />
-            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="258" Height ="25" Text="{Binding Tourist.Email}" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="87" Height ="25" Text="{Binding Order.Tourist.Surname}" VerticalAlignment="Top" />
             <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="60" Height ="20" Text="Mobile :" VerticalAlignment="Top" />
-            <TextBox Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Tourist.Phone}" VerticalAlignment="Top" />
-
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Tourist.Phone}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="60" Height ="20" Text="RouteId :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="453" Height ="24" Text="{Binding Order.RouteId}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="60" Height ="20" Text="From :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Route.FromCity.CityName}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="60" Height ="20" Text="To :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Route.ToCity.CityName}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="82" Height ="20" Text="StartDate :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Route.StartDate}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="83" Height ="20" Text="FinishDate :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Route.FinishDate}" VerticalAlignment="Top" />
+            <TextBlock Margin="110,30,10,0" Foreground="Black" FontSize="16" Width ="83" Height ="20" Text="Price :" VerticalAlignment="Top" />
+            <TextBlock Margin="0,30,10,0" Foreground="Black" FontSize="16" Width ="157" Height ="24" Text="{Binding Order.Price}" VerticalAlignment="Top" />
 
         </WrapPanel>
     </Grid>

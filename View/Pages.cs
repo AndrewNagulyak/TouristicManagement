@@ -30,6 +30,9 @@ namespace TravelManager.View
             container.RegisterType<IService<Country>, CountryService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IService<City>, CityService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IService<Order>, OrderService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<User>,UserService>(new InjectionConstructor(new object[] { travelContext }));
+            container.RegisterType<IService<InternalUserData>, UserDataService>(new InjectionConstructor(new object[] { travelContext }));
+
             container.RegisterType<IService<Tourist>, TouristService>(new InjectionConstructor(new object[] { travelContext }));
 
 
@@ -37,6 +40,8 @@ namespace TravelManager.View
             container.RegisterType<IService<Route>, RouteService>(new InjectionConstructor(new object[] { travelContext }));
             container.RegisterType<IViewModal<UpdateServiceViewModal>, UpdateServiceViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Country>>(), container.Resolve<IService<Route>>(), container.Resolve<IService<City>>(), container.Resolve<IService<Hotel>>(), container.Resolve<PlacesViewModal>() }));
             container.RegisterType<IViewModal<RoutesViewModal>, RoutesViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<Route>>() }));
+            container.RegisterType<IViewModal<CreateUserViewModal>, CreateUserViewModal>(new InjectionConstructor(new object[] { container.Resolve<IService<User>>() ,container.Resolve<IService<InternalUserData>>()}));
+
 
 
 
@@ -71,10 +76,12 @@ namespace TravelManager.View
             get
             {
                 // AdminViewModel adminViewModel = container.Resolve<AdminViewModel>();
-
-                adminmenu = container.Resolve<AdminMenu>();
-                Main.Width = 400;
-                Main.Height = 500;
+                if (adminmenu == null)
+                {
+                    adminmenu = container.Resolve<AdminMenu>();
+                }
+                Main.Width = 1080;
+                Main.Height = 640;
                 return adminmenu;
             }
         }
@@ -148,6 +155,16 @@ namespace TravelManager.View
                 return updateService;
             }
         }
+        private static CreateUser createUser;
+        public static CreateUser CreateUser
+        {
+            get
+            {
+
+                createUser = container.Resolve<CreateUser>();
+                return createUser;
+            }
+        }
 
         public static OrderRoute OrderRoute { get => orderRoute; set => orderRoute = value; }
 
@@ -161,7 +178,7 @@ namespace TravelManager.View
 
         public static void SetMenu(UserControl control)
         {
-            Main.SetMenu(menu);
+            Main.SetMenu(control);
         }
         public static void OpenWindow(Route r)
         {

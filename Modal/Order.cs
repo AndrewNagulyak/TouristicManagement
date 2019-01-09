@@ -25,6 +25,7 @@ namespace TravelManager.Modal
         public virtual Tourist Tourist { get; set; }
 
         public virtual Route Route { get; set; }
+        public double Price { get; set; }
 
     }
 }

@@ -11,8 +11,17 @@
 
         <Grid Height="54"  DockPanel.Dock="Top">
 
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,0,10,0">
-            </StackPanel>
+            <WrapPanel  VerticalAlignment="Top" Margin="80,15,10,0">
+                <TextBlock Text="Choose country : "></TextBlock>
+                <ComboBox Width="90" SelectedItem="{Binding Country}" ItemsSource="{Binding Countries}"> </ComboBox>
+                <TextBlock Margin="10,0,0,0" Text="Hotel stars : "></TextBlock>
+                <ComboBox Width="90" SelectedItem="{Binding Stars}" ItemsSource="{Binding Routes.Hotel.}"></ComboBox>
+                <TextBlock Margin="10,0,0,0" Text=" From : "></TextBlock>
+                <ComboBox Width="90" SelectedItem="{Binding Stars}" ItemsSource="{Binding Routes.Hotel.}"></ComboBox>
+                <TextBlock Margin="10,0,0,0" Text=" To : "></TextBlock>
+                <ComboBox Width="90" SelectedItem="{Binding Stars}" ItemsSource="{Binding Routes.Hotel.}"></ComboBox>
+
+            </WrapPanel>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Grid x:Name="Main" Background="Lavender" DockPanel.Dock="Right" Margin="0,0,0,0" >

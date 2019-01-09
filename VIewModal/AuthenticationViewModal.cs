@@ -94,9 +94,13 @@ namespace TravelManager.VIewModal
                 Username = string.Empty; //reset
                 passwordBox.Password = string.Empty; //reset
                 Status = string.Empty;
-                if (user.Role == "Administator")
+                if (user.Role == "Administrator")
                 {
+                    Pages.SetWindow(Pages.Main);
                     Pages.SetMenu(Pages.AdminMenu);
+
+                    Pages.SetPage(Pages.MainControl);
+
                 }
                 else
                 {

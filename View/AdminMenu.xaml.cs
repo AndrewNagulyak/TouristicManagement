@@ -24,5 +24,10 @@ namespace TravelManager.View
         {
             InitializeComponent();
         }
+        private void Routes_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.Routes);
+        private void Service_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.UpdateService);
+        private void Order_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.OrderTiket);
+        private void Create_click(object sender, MouseButtonEventArgs e) => Pages.SetPage(Pages.CreateUser);
+
     }
 }

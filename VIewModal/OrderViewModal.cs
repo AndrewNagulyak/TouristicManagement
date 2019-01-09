@@ -22,7 +22,7 @@ namespace TravelManager.VIewModal
         private IService<Route> routeService;
         private IService<Tourist> touristService;
         private IService<Order> orderService;
-
+        private double pris;
         Tourist _tourist;
         Route _route;
         Order _order;
@@ -55,9 +55,16 @@ namespace TravelManager.VIewModal
 
         private void AddOrder(object o)
         {
+            Order.RouteId = Route.Id;
+            int count = touristService.Get().ToList().Select(x => x.Phone == Tourist.Phone).ToList().Count +1;
+            if (count > 3)
+                pris = routeService.FindById(Order.RouteId).Price* 0.7;
+            else
+               pris= routeService.FindById(Order.RouteId).Price* (1-(double)count / 10 );
             Tourist t = new Tourist() { Email = Tourist.Email, Name = Tourist.Name, Phone = Tourist.Phone, Surname = Tourist.Surname ,Id=Tourist.Id};
             touristService.Add(t);
-            Order r = new Order() { Id=Order.Id,Phone=t.Phone,TouristId=t.Id,RouteId=Route.Id};
+            
+            Order r = new Order() { Id=Order.Id,Phone=t.Phone,TouristId=t.Id,RouteId=Route.Id,Price=pris,Route=Route};
             orderService.Add(r);
             Pages.OrderRoute.Close();
             Pages.SetPage(Pages.Routes);

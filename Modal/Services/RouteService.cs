@@ -19,7 +19,7 @@ namespace TravelManager.Modal.Services
         }
         public override IEnumerable<Route> Get()
         {
-            IEnumerable<Route> countries = base.GetWithInclude(x => x.ToCity,p=>p.Hotel,z=>z.FromCity);
+            IEnumerable<Route> countries = base.GetWithInclude(x => x.ToCity,p=>p.Hotel,z=>z.FromCity, y => y.ToCity.Country);
             return countries;
         }
     }
